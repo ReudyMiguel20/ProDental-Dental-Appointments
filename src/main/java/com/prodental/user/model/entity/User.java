@@ -1,10 +1,7 @@
 package com.prodental.user.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,6 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
@@ -36,6 +34,7 @@ public class User implements UserDetails {
     @JsonIgnore
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     private boolean enabled;
