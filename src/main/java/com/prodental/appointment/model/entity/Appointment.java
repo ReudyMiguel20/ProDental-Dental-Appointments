@@ -3,6 +3,7 @@ package com.prodental.appointment.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import com.prodental.user.model.entity.User;
 
 import java.time.LocalDateTime;
 
@@ -22,7 +23,10 @@ public class Appointment {
     @JsonIgnore
     private Long id;
 
-    private String patientName;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     private LocalDateTime appointmentDate;
     private String procedure;
     private String notes;

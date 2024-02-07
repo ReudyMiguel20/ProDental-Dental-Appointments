@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
     public void assignRoleToUser(User user) {
         if (getAllUsers().isEmpty()) {
             user.setRole(Role.ADMIN);
+            user.setEnabled(true);
         } else {
             user.setRole(Role.USER);
         }
