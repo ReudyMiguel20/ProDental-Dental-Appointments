@@ -29,4 +29,10 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
+    @Override
+    public void activateNewUser(String token) {
+        User user = userService.getUserByToken(token);
+        userService.activateUser(user);
+    }
+
 }

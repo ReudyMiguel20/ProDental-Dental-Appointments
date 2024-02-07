@@ -16,4 +16,8 @@ public interface UserService {
     void assignRoleToUser(User user);
 
     User createNewUserAndAssignRole(NewUserRequest newUserRequest);
+
+    User getUserByToken(String token);
+
+    void activateUser(User user);
 }

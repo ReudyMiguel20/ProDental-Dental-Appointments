@@ -59,5 +59,19 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public User getUserByToken(String token) {
+        String username = jwtService.extractUsername(token);
+
+        return userRepository.findByUsername(username)
+                .orElseThrow(UserNotFound::new);
+    }
+
+    @Override
+    public void activateUser(User user) {
+        user.setEnabled(true);
+        saveUser(user);
+    }
+
 
 }

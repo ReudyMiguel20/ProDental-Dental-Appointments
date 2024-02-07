@@ -5,4 +5,6 @@ import com.prodental.user.model.dto.NewUserRequest;
 
 public interface AuthService {
     AuthenticationToken register(NewUserRequest request);
+
+    void activateNewUser(String token);
 }
