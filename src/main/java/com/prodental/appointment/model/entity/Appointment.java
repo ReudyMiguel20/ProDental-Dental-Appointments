@@ -31,5 +31,4 @@ public class Appointment {
     private String procedure;
     private String notes;
 
-
 }
