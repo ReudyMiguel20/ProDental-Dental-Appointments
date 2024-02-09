@@ -17,7 +17,8 @@ const HeroBanner = () => {
         </div>
 
         <div className="hero-appointment">
-          <button>Agenda Tu Cita</button>
+          <button className="hero-appointment-first-button">Agenda Tu Cita</button>
+          <button className="hero-appointment-second-button">Mas Información</button>
         </div>
       </div>
     </div>

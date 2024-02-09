@@ -54,13 +54,24 @@
     padding-bottom: 3%;
 }
 
-.hero-appointment button {
+.hero-appointment .hero-appointment-first-button {
     border-radius: 5px;
     background-color: #03AFAE;
     color: white;
     font-weight: 500;
     text-shadow: 2px 2px 5px black;
     font-size: 1.2vw; /* responsive font size */
+    margin-left: 25px;
+}
+
+.hero-appointment .hero-appointment-second-button {
+    border-radius: 5px;
+    background-color: rgb(177, 172, 172);
+    color: white;
+    font-weight: 500;
+    text-shadow: 1px 1px 6px black;
+    font-size: 1.2vw; /* responsive font size */
+    margin-left: 25px;
 }
 
 @media (max-width: 600px) {
