@@ -1,0 +1,19 @@
+.information-card-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.information-card-main {
+    position: relative;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.information-card-icon {
+    position: absolute;
+    height: 125%;
+}
