@@ -3,27 +3,29 @@ import "./InformationCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 
-const InformationCard = () => {
+const InformationCard = (props) => {
   return (
     <div className="information-card-container">
       <div className="information-card-main">
         <div className="information-card-icon">
-
           <div className="icon-border">
-            <FontAwesomeIcon icon={faCalendarCheck} size="3x" />
+            <FontAwesomeIcon icon={props.icon} size="3x" />
           </div>
         </div>
 
         <div className="information-card-title">
-          <h3>Agenda Tu Cita</h3>
+          <h3>{props.title}</h3>
         </div>
 
         <div className="information-card-description">
-          <p>Description hereDescription hereDescription hereDescription hereDescription hereDescription hereDescription hereDescription here</p>
+          <p style={{ textAlign: "center" }}>
+            {props.firstDescription} <br/>
+            {props.secondDescription}
+          </p>
         </div>
 
         <div className="information-card-button">
-          <button>button here</button>
+          <button>{props.buttonText}</button>
         </div>
       </div>
     </div>
