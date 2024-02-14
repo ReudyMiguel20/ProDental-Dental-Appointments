@@ -7,6 +7,7 @@ import InformationCard from "./Components/InformationCard/InformationCard";
 import { InformationCardData } from "./Data/InformationCardData";
 import ImageForm from "./Components/ImageForm/ImageForm";
 import ContactUs from "./Components/ContactUs/ContactUs";
+import AppFooter from "./Components/AppFooter/AppFooter";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
 
       <ImageForm />
       <ContactUs />
+        <AppFooter />
     </div>
   );
 }

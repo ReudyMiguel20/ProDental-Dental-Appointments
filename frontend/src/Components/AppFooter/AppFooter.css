@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    background-color: rgb(13,110,253);
+
+}
+
+.footer-about,
+.footer-services,
+.footer-socials {
+    flex: 1;
+    margin: 0 1rem;
+    color: whitesmoke;
+    font-family: 'Lora', serif;
+}
+
+.footer-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-services a {
+    color: #0D6EFD;
+    text-decoration: none;
+}
+
+.footer-services a:hover {
+    text-decoration: underline;
+}
+
+.footer-services a:visited {
+    color: #0D6EFD;
+}
+
+.footer-services a:active {
+    color: #0D6EFD;
+}
+
+.footer-services a:link {
+    color: #0D6EFD;
+}
+
+.footer-socials a {
+    color: #0D6EFD;
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    text-decoration: underline;
+}
+
+.footer-socials a:visited {
+    color: #0D6EFD;
+}
+
+.footer-socials a:active {
+    color: #0D6EFD;
+}
+
+.footer-socials a:link {
+    color: #0D6EFD;
+}
+
