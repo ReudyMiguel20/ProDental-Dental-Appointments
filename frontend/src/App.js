@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import InformationCard from "./Components/InformationCard/InformationCard";
 import { InformationCardData } from "./Data/InformationCardData";
 import ImageForm from "./Components/ImageForm/ImageForm";
+import ContactUs from "./Components/ContactUs/ContactUs";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       </div>
 
       <ImageForm />
+      <ContactUs />
     </div>
   );
 }
