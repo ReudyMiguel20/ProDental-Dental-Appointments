@@ -1,0 +1,12 @@
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    border-radius: 50%;
+    border: none;
+    background-color: #0D6EFD;
+    cursor: pointer;
+    z-index: 1000;
+
+}

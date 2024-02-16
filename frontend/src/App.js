@@ -8,30 +8,32 @@ import { InformationCardData } from "./Data/InformationCardData";
 import ImageForm from "./Components/ImageForm/ImageForm";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import AppFooter from "./Components/AppFooter/AppFooter";
+import FloatingButton from "./Components/FloatingButton/FloatingButton";
 
 function App() {
   return (
-    <div className="App">
-      <AppNavbar />
-      <HeroBanner />
+      <div className="App">
+          <FloatingButton />
+          <AppNavbar/>
+          <HeroBanner/>
 
-      <div className="information-card">
-        {InformationCardData.map((item, index) => (
-          <InformationCard
-            key={index}
-            icon={item.icon}
-            title={item.title}
-            firstDescription={item.firstDescription}
-            secondDescription={item.secondDescription}
-            buttonText={item.buttonText}
-          />
-        ))}
+          <div className="information-card">
+              {InformationCardData.map((item, index) => (
+                  <InformationCard
+                      key={index}
+                      icon={item.icon}
+                      title={item.title}
+                      firstDescription={item.firstDescription}
+                      secondDescription={item.secondDescription}
+                      buttonText={item.buttonText}
+                  />
+              ))}
+          </div>
+
+          <ImageForm/>
+          <ContactUs/>
+          <AppFooter/>
       </div>
-
-      <ImageForm />
-      <ContactUs />
-        <AppFooter />
-    </div>
   );
 }
 
