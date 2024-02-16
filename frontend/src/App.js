@@ -9,31 +9,25 @@ import ImageForm from "./Components/ImageForm/ImageForm";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import AppFooter from "./Components/AppFooter/AppFooter";
 import FloatingButton from "./Components/FloatingButton/FloatingButton";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Contact from "./Pages/Contact";
 
 function App() {
   return (
-      <div className="App">
-          <FloatingButton />
-          <AppNavbar/>
-          <HeroBanner/>
-
-          <div className="information-card">
-              {InformationCardData.map((item, index) => (
-                  <InformationCard
-                      key={index}
-                      icon={item.icon}
-                      title={item.title}
-                      firstDescription={item.firstDescription}
-                      secondDescription={item.secondDescription}
-                      buttonText={item.buttonText}
-                  />
-              ))}
-          </div>
-
-          <ImageForm/>
-          <ContactUs/>
-          <AppFooter/>
-      </div>
+    <div className="App">
+      <Router>
+        <FloatingButton />
+        <AppNavbar />
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
+        <AppFooter />
+      </Router>
+    </div>
   );
 }
 

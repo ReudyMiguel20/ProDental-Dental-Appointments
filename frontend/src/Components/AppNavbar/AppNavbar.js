@@ -14,10 +14,10 @@ const AppNavbar = () => {
       <span className="logo-title">Pro Dental</span>
       </Navbar.Brand>
       <Nav className="me-auto">
-        <Nav.Link href="#home">Inicio</Nav.Link>
+        <Nav.Link href="/">Inicio</Nav.Link>
         <Nav.Link href="#features">Registrarse</Nav.Link>
         <Nav.Link href="#pricing">Nosotros</Nav.Link>
-        <Nav.Link href="#pricing">Contacto</Nav.Link>
+        <Nav.Link href="/contact">Contacto</Nav.Link>
       </Nav>
     </Container>
   </Navbar>
