@@ -24,7 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/dashboard/*" element={<UserDashboard />} />
           </Routes>
         </div>
         <AppFooter />

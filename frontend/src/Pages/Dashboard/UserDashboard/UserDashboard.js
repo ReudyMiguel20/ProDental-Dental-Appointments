@@ -13,7 +13,7 @@ const UserDashboard = () => {
 
             <div className="dashboard-content">
                 <Routes>
-                    <Route path="/" element={<Contact/>}/>
+                    <Route path="/contacto" element={<Contact/>}/>
                 </Routes>
             </div>
         </div>
