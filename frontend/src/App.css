@@ -1,7 +1,9 @@
 .App {
   width: 100vw;
-  height: 100vh;
+  height: 140vh;
   background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
@@ -13,4 +15,20 @@ body {
   display: flex;
   justify-content: space-around;
   background-color: #f8f9fa;
+}
+
+.main-content {
+  flex-grow: 2;
+}
+
+.AppFooter {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.AppNavbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
