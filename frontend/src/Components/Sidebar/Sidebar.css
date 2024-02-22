@@ -2,7 +2,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 250px;
+    width: 325px;
     background-color: #333F53;
     color: white;
     z-index: 100;
@@ -45,6 +45,16 @@
     margin-bottom: 25px;
     color: white;
     text-decoration: none;
+}
+
+.sidebar-elements .row:hover {
+    background-color: #3C4C69;
+    cursor: pointer;
+}
+
+.sidebar-elements #active {
+    background-color: #3C4C69;
+    will-change: background-color;
 }
 
 .sidebar-logo-user h5 {
