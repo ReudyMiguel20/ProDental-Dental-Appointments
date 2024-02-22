@@ -19,7 +19,7 @@ const InformationCard = (props) => {
 
         <div className="information-card-description">
           <p style={{ textAlign: "center" }}>
-            {props.firstDescription} <br/>
+            {props.firstDescription} <br />
             {props.secondDescription}
           </p>
         </div>

@@ -8,19 +8,23 @@ import logo from "../../Assets/Pro-Dental.png";
 const AppNavbar = () => {
   return (
     <Navbar bg="primary" data-bs-theme="dark">
-    <Container>
-      <Navbar.Brand href="#home">
-      <img src={logo} style={{width: '40px', height: '40px', backgroundColor: "blue"}} alt="logo" />
-      <span className="logo-title">Pro Dental</span>
-      </Navbar.Brand>
-      <Nav className="me-auto">
-        <Nav.Link href="/">Inicio</Nav.Link>
-        <Nav.Link href="#features">Registrarse</Nav.Link>
-        <Nav.Link href="#pricing">Nosotros</Nav.Link>
-        <Nav.Link href="/contact">Contacto</Nav.Link>
-      </Nav>
-    </Container>
-  </Navbar>
+      <Container>
+        <Navbar.Brand href="#home">
+          <img
+            src={logo}
+            style={{ width: "40px", height: "40px", backgroundColor: "blue" }}
+            alt="logo"
+          />
+          <span className="logo-title">Pro Dental</span>
+        </Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link href="/">Inicio</Nav.Link>
+          <Nav.Link href="#features">Registrarse</Nav.Link>
+          <Nav.Link href="#pricing">Nosotros</Nav.Link>
+          <Nav.Link href="/contact">Contacto</Nav.Link>
+        </Nav>
+      </Container>
+    </Navbar>
   );
 };
 

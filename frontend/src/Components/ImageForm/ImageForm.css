@@ -1,31 +1,29 @@
 .image-form-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 75px;
-    padding-right: 200px;
-    padding-left: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 75px;
+  padding-right: 200px;
+  padding-left: 200px;
 }
 
-
-
 .image-form-image {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 900px) {
-    .image-form-container {
-        flex-direction: row;
-    }
+  .image-form-container {
+    flex-direction: row;
+  }
 }
 
 /* CSS for smaller screens */
 @media (max-width: 899px) {
-    .image-form-container {
-        flex-direction: column;
-    }
+  .image-form-container {
+    flex-direction: column;
+  }
 }

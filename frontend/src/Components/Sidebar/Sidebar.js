@@ -1,16 +1,14 @@
 import React from "react";
 import "./Sidebar.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import UserPhoto from "../../Assets/user-photo.png";
 
 const Sidebar = ({ items }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    const handleClick = (path) => {
-        navigate(path);
-    }
-
+  const handleClick = (path) => {
+    navigate(path);
+  };
 
   return (
     <div className="sidebar-container">
@@ -28,15 +26,18 @@ const Sidebar = ({ items }) => {
       <div className="sidebar-elements">
         <ul>
           {items.map((item, index) => (
-            <Link to={item.path} key={index} style={{textDecoration: "none"}}>
-                <li
-                    key={index}
-                    className="row"
-                    id={window.location.pathname == item.path ? "active" : ""}
-                    onClick={() => {
-                        handleClick(item.path);
-                    }}
-                ><div className="icon">{item.icon}</div> <div className="title">{item.title}</div></li>
+            <Link to={item.path} key={index} style={{ textDecoration: "none" }}>
+              <li
+                key={index}
+                className="row"
+                id={window.location.pathname == item.path ? "active" : ""}
+                onClick={() => {
+                  handleClick(item.path);
+                }}
+              >
+                <div className="icon">{item.icon}</div>{" "}
+                <div className="title">{item.title}</div>
+              </li>
             </Link>
           ))}
         </ul>

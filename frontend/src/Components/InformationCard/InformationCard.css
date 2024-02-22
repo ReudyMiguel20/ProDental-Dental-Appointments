@@ -1,68 +1,67 @@
 .information-card-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 65px;
 }
 
 .information-card-main:hover {
-    background-color: #E0DDDD;
-    transition: background-color 0.3s ease-out;
-    box-shadow: 0 0 10px 5px #1556b8;
+  background-color: #e0dddd;
+  transition: background-color 0.3s ease-out;
+  box-shadow: 0 0 10px 5px #1556b8;
 }
 
 .information-card-button:hover {
-    transition: background-color 0.1s ease;
-    box-shadow: 0 0 10px 5px #1556b8;
+  transition: background-color 0.1s ease;
+  box-shadow: 0 0 10px 5px #1556b8;
 }
 
 .information-card-main {
-    position: relative;
-    border: 1px solid grey;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
+  position: relative;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
 }
 
 .information-card-icon {
-    display: flex;
-    align-items: center;
-    border-radius: %;
-    background-color: rgb(23,178,232);
-    width: 70px;
-    height: 75px;
-    padding-left: 5%;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: %;
+  background-color: rgb(23, 178, 232);
+  width: 70px;
+  height: 75px;
+  padding-left: 5%;
+  margin-bottom: 20px;
 }
 
 .information-card-description {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .information-card-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: none;
-    border-radius: 70%;
-    background-color: #A3D8ED;
-    text-decoration: none;
-    margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  border-radius: 70%;
+  background-color: #a3d8ed;
+  text-decoration: none;
+  margin-top: 15px;
 }
 
 .information-card-button button {
-    color: black;
-    font-size: 20px;
-    background-color: #A3D8ED;
-    border: none;
-    border-radius: 70%;
-    padding: 10px;
-    text-decoration: none;
+  color: black;
+  font-size: 20px;
+  background-color: #a3d8ed;
+  border: none;
+  border-radius: 70%;
+  padding: 10px;
+  text-decoration: none;
 }
-

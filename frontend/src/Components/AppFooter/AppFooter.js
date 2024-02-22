@@ -6,7 +6,13 @@ const AppFooter = () => {
     <div className="footer-container">
       <div className="footer-about">
         <h4>Acerca de</h4>
-          <p>Estamos comprometidos con la excelencia en la atención odontológica desde el momento en que abrimos nuestras puertas en 2019. Nuestra misión es brindar a nuestros pacientes una experiencia dental excepcional, combinando la última tecnología con un enfoque centrado en el paciente.</p>
+        <p>
+          Estamos comprometidos con la excelencia en la atención odontológica
+          desde el momento en que abrimos nuestras puertas en 2019. Nuestra
+          misión es brindar a nuestros pacientes una experiencia dental
+          excepcional, combinando la última tecnología con un enfoque centrado
+          en el paciente.
+        </p>
       </div>
       <div className="footer-services">
         <h4>Servicios</h4>
