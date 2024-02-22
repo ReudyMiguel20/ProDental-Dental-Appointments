@@ -1,6 +1,7 @@
 package com.prodental.user.controller;
 
 import com.prodental.user.model.dto.UpdateUserRequest;
+import com.prodental.user.model.entity.User;
 import com.prodental.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,14 @@ public class UserController {
             @Valid @RequestBody UpdateUserRequest request
     ) {
         userService.updateUser(request, email);
+    }
+
+    @GetMapping("/getuserdetails/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public User getUserDetails(
+            @PathVariable String email
+    ) {
+        return userService.getUserByEmail(email);
     }
 
 
