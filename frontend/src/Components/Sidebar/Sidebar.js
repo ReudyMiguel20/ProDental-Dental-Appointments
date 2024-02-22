@@ -10,9 +10,13 @@ const Sidebar = ({ items }) => {
     navigate(path);
   };
 
+  const clickToDashboard = () => {
+    navigate("/dashboard");
+  }
+
   return (
     <div className="sidebar-container">
-      <div className="sidebar-title">
+      <div className="sidebar-title" onClick={clickToDashboard}>
         <h5>Dashboard</h5>
       </div>
 

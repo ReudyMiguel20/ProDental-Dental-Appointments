@@ -1,14 +1,15 @@
 package com.prodental.common.exceptionhandler;
 
 import com.prodental.user.exception.EmailNotFound;
+import com.prodental.user.exception.UserNotEnabled;
 import com.prodental.user.exception.UserNotFound;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
+import jakarta.validation.constraints.Email;
+import org.springframework.http.*;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.request.WebRequest;
@@ -29,11 +30,9 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpStatusCode status,
                                                                   WebRequest request) {
 
-        //Initializing the HttpServletRequest object to get the path of the request that caused the error.
         HttpServletRequest requestServlet = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         String path = requestServlet.getRequestURI();
 
-        //Creating the body of the response
         CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
                 .timestamp(LocalDateTime.now().format(formatter))
                 .status(status.value())
@@ -48,7 +47,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserNotFound.class)
     public ResponseEntity<Object> handleUserNotFound(MethodArgumentNotValidException ex,
                                                         HttpHeaders headers,
-                                                        HttpStatusCode status,
+                                                        HttpStatus status,
                                                         WebRequest request) {
 
         HttpServletRequest requestServlet = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
@@ -66,22 +65,39 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(EmailNotFound.class)
-    public ResponseEntity<Object> handleEmailNotFound(MethodArgumentNotValidException ex,
-                                                     HttpHeaders headers,
-                                                     HttpStatusCode status,
-                                                     WebRequest request) {
+    public ResponseEntity<Object> handleEmailNotFound(EmailNotFound ex,
+                                                      WebRequest request) {
 
         HttpServletRequest requestServlet = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         String path = requestServlet.getRequestURI();
 
         CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
                 .timestamp(LocalDateTime.now().format(formatter))
-                .status(404)
-                .error("Not Found")
+                .status(HttpStatus.NOT_FOUND.value())
+                .error(HttpStatus.NOT_FOUND.getReasonPhrase())
                 .message("There's no registered user with this email.")
                 .path(path)
                 .build();
 
-        return ResponseEntity.status(404).body(customErrorMessage);
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(customErrorMessage);
     }
+
+    @ExceptionHandler(UserNotEnabled.class)
+    public ResponseEntity<Object> handleUserNotEnabled(UserNotEnabled ex,
+                                                       WebRequest request) {
+
+        HttpServletRequest requestServlet = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        String path = requestServlet.getRequestURI();
+
+        CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
+                .timestamp(LocalDateTime.now().format(formatter))
+                .status(HttpStatus.FORBIDDEN.value())
+                .error(HttpStatus.FORBIDDEN.getReasonPhrase())
+                .message("User is not enabled yet. Try contacting an administrator.")
+                .path(path)
+                .build();
+
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(customErrorMessage);
+    }
+
 }

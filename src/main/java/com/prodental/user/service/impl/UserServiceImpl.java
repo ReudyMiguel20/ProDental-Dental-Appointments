@@ -1,13 +1,16 @@
 package com.prodental.user.service.impl;
 
 import com.prodental.common.jwt.JwtService;
+import com.prodental.user.exception.UserNotEnabled;
 import com.prodental.user.exception.UserNotFound;
 import com.prodental.user.model.dto.NewUserRequest;
+import com.prodental.user.model.dto.UpdateUserRequest;
 import com.prodental.user.model.entity.Role;
 import com.prodental.user.model.entity.User;
 import com.prodental.user.repository.UserRepository;
 import com.prodental.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.Conditions;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
@@ -30,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     // Maybe the use case for this would be when user forgets their username and know the email
     @Override
-    public User retrieveUserByEmail(String email) {
+    public User getUserByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(UserNotFound::new);
     }
@@ -72,6 +75,31 @@ public class UserServiceImpl implements UserService {
     public void activateUser(User user) {
         user.setEnabled(true);
         saveUser(user);
+    }
+
+    @Override
+    public void isUserEnabled(User user) {
+        if (!user.isEnabled()) {
+            throw new UserNotEnabled();
+        }
+    }
+
+    /**
+     * This method updates the user with the given email with the new
+     * details provided in the request object
+     *
+     * @param request the request containing the new user details
+     * @param email the email of the user to update
+     */
+    @Override
+    public void updateUser(UpdateUserRequest request, String email) {
+        User userToUpdate = getUserByEmail(email);
+        isUserEnabled(userToUpdate);
+
+        modelMapper.getConfiguration().setPropertyCondition(Conditions.isNotNull());
+        modelMapper.map(request, userToUpdate);
+
+        saveUser(userToUpdate);
     }
 
 

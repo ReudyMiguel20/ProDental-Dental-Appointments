@@ -1,12 +1,13 @@
 package com.prodental.user.controller;
 
+import com.prodental.user.model.dto.UpdateUserRequest;
 import com.prodental.user.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,6 +17,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/test")
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> test(Authentication auth) {
         return ResponseEntity.ok("Test");
     }
@@ -29,6 +31,16 @@ public class UserController {
     public ResponseEntity<String> testUser(Authentication auth) {
         return ResponseEntity.ok("Test");
     }
+
+    @PutMapping("/updateuser/{email}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateUser(
+            @PathVariable String email,
+            @Valid @RequestBody UpdateUserRequest request
+    ) {
+        userService.updateUser(request, email);
+    }
+
 
 
 }
