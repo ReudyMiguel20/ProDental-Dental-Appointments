@@ -63,7 +63,7 @@ const Profile = () => {
       if (!response.ok) {
         setIsUpdateSuccessful(false);
         const errorData = await response.json();
-        setErrorMessage(errorData.message || "Error updating existing user.")
+        setErrorMessage(errorData.message || "Error updating existing user.");
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
@@ -77,17 +77,19 @@ const Profile = () => {
   };
 
   const StatusUpdate = ({ isUpdateSuccessful, errorMessage }) => {
-      return (
-          <div className="status-update">
-              <h4>{isUpdateSuccessful ? "User updated successfully " : errorMessage}</h4>
-          </div>
-      )
-  }
-
     return (
-        <div className="profile-container">
-            <div className="update-form">
-                <h3 style={{ marginBottom: "25px" }}>
+      <div className="status-update">
+        <h4>
+          {isUpdateSuccessful ? "User updated successfully " : errorMessage}
+        </h4>
+      </div>
+    );
+  };
+
+  return (
+    <div className="profile-container">
+      <div className="update-form">
+        <h3 style={{ marginBottom: "25px" }}>
           Actualizar/Cambiar Datos del Usuario
         </h3>
 
@@ -151,11 +153,10 @@ const Profile = () => {
           </button>
         </form>
 
-                <StatusUpdate
-                    isUpdateSuccessful={isUpdateSuccessful}
-                    errorMessage={errorMessage} 
-                />
-
+        <StatusUpdate
+          isUpdateSuccessful={isUpdateSuccessful}
+          errorMessage={errorMessage}
+        />
       </div>
     </div>
   );
