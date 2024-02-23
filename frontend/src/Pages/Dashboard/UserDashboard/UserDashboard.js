@@ -5,7 +5,7 @@ import { userItems } from "../../../Data/UserSidebarData";
 import { Route, Routes } from "react-router-dom";
 import Home from "../../Home";
 import Contact from "../../Contact";
-import Profile from "../Profile/Profile";
+import Profile from "../../../Components/Profile/Profile";
 
 const UserDashboard = () => {
   return (

@@ -19,7 +19,7 @@ const AppNavbar = () => {
         </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="/">Inicio</Nav.Link>
-          <Nav.Link href="#features">Registrarse</Nav.Link>
+          <Nav.Link href="/registro">Registrarse</Nav.Link>
           <Nav.Link href="#pricing">Nosotros</Nav.Link>
           <Nav.Link href="/contact">Contacto</Nav.Link>
         </Nav>

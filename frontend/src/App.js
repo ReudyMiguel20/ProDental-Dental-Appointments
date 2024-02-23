@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import UserDashboard from "./Pages/Dashboard/UserDashboard/UserDashboard";
+import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/dashboard/*" element={<UserDashboard />} />
+            <Route path="/registro" element={<RegistrationForm />} />
           </Routes>
         </div>
         <AppFooter />
