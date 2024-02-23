@@ -5,6 +5,7 @@ import { userItems } from "../../../Data/UserSidebarData";
 import { Route, Routes } from "react-router-dom";
 import Home from "../../Home";
 import Contact from "../../Contact";
+import Profile from "../Profile/Profile";
 
 const UserDashboard = () => {
   return (
@@ -13,6 +14,8 @@ const UserDashboard = () => {
 
       <div className="dashboard-content">
         <Routes>
+          <Route path="/" element={<Profile />} />
+          <Route path="/perfil" element={<Profile />} />
           <Route path="/contacto" element={<Contact />} />
         </Routes>
       </div>

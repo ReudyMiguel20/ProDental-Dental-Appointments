@@ -12,7 +12,7 @@ const Sidebar = ({ items }) => {
 
   const clickToDashboard = () => {
     navigate("/dashboard");
-  }
+  };
 
   return (
     <div className="sidebar-container">
