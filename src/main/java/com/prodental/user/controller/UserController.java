@@ -34,13 +34,13 @@ public class UserController {
         return ResponseEntity.ok("Test");
     }
 
-    @PutMapping("/updateuser/{email}")
+    @PutMapping("/updateuser/{username}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateUser(
-            @PathVariable String email,
+            @PathVariable String username,
             @Valid @RequestBody UpdateUserRequest request
     ) {
-        userService.updateUser(request, email);
+        userService.updateUser(request, username);
     }
 
     @GetMapping("/getuserdetails/{email}")

@@ -106,8 +106,8 @@ public class UserServiceImpl implements UserService {
      * @param email the email of the user to update
      */
     @Override
-    public void updateUser(UpdateUserRequest request, String email) {
-        User userToUpdate = getUserByEmail(email);
+    public void updateUser(UpdateUserRequest request, String username) {
+        User userToUpdate = getUserByUsername(username);
         isUserEnabled(userToUpdate);
 
         modelMapper.getConfiguration().setPropertyCondition(Conditions.isNotNull());

@@ -30,8 +30,8 @@ public class SecurityConfiguration {
                     auth
                             .requestMatchers("/api/v1/user/testadmin").hasAnyAuthority("ADMIN")
                             .requestMatchers("/api/v1/user/testadmin").hasAnyRole( "ADMIN")
-                            .requestMatchers("/api/v1/user/testuser").hasAnyAuthority("USER")
-                            .requestMatchers("/api/v1/user/testuser").hasAnyRole( "USER")
+                            .requestMatchers("/api/v1/user/**").hasAnyAuthority("USER")
+                            .requestMatchers("/api/v1/user/**").hasAnyRole( "USER")
                             .anyRequest()
                             .permitAll();
                 })
