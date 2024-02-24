@@ -45,7 +45,7 @@ const Profile = () => {
       username,
       email,
       phone_number: phoneNumber,
-      address
+      address,
     };
 
     try {

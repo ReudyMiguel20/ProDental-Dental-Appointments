@@ -1,62 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 .registration-form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../../Assets/background-form4.jpg");
-    background-size: cover;
-    background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../Assets/background-form4.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.7);
-    border: 1px solid grey;
-    padding: 2rem;
-    border-radius: 0.25rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 55%;
-    max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid grey;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 55%;
+  max-width: 600px;
 }
 
 .form-container form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .button-form {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 0.25rem;
-    background-color: #0d6efd;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 2.5rem;
-    font-family: 'Lato', sans-serif;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #0d6efd;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2.5rem;
+  font-family: "Lato", sans-serif;
 }
 
 .button-form:hover {
-    background-color: darkcyan;
+  background-color: darkcyan;
 }
 
 h3 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-family: "Roboto", sans-serif;
 }
 
 h5 {
-    font-family: 'Open Sans', sans-serif;
-    margin-top: 1rem;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 1rem;
 }
 
+input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  font-family: "Lato", sans-serif;
+}
 
-
+input:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+}
