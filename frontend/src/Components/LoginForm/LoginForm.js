@@ -43,6 +43,7 @@ const LoginForm = () => {
             } else {
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
+                localStorage.setItem("userLoggedIn", true);
 
                 setLoginSuccess(true);
 
@@ -66,7 +67,7 @@ const LoginForm = () => {
                 <form>
                     <div className="mb-3">
 
-                        <label for="Nombre de Usuario" className="form-label">Nombre de Usuario</label>
+                        <label htmlFor="Nombre de Usuario" className="form-label">Nombre de Usuario</label>
                         <input
                             type="email"
                             className="form-control"
@@ -78,7 +79,7 @@ const LoginForm = () => {
                     </div>
 
                     <div className="mb-3">
-                        <label for="password" className="form-label">Contraseña</label>
+                        <label htmlFor="password" className="form-label">Contraseña</label>
                         <input
                             type="password"
                             className="form-control"
@@ -89,7 +90,7 @@ const LoginForm = () => {
 
                     <div className="mb-3 form-check">
                         <input type="checkbox" className="form-check-input" id="recordar"/>
-                        <label className="form-check-label" for="recorder">Recordarme</label>
+                        <label className="form-check-label" htmlFor="recordar">Recordarme</label>
                     </div>
 
                     <button
