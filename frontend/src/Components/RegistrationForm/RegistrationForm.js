@@ -59,7 +59,6 @@ const RegistrationForm = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       } else {
         setRegistrationSuccessful(true);
-        setShowToast(true);
       }
     } catch (error) {
       setRegistrationSuccessful(false);
