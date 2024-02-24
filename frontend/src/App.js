@@ -15,6 +15,7 @@ import Contact from "./Pages/Contact";
 import UserDashboard from "./Pages/Dashboard/UserDashboard/UserDashboard";
 import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
 import RegistrationSuccessful from "./Components/RegistrationSuccessful/RegistrationSuccessful";
+import LoginForm from "./Components/LoginForm/LoginForm";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/dashboard/*" element={<UserDashboard />} />
             <Route path="/registro" element={<RegistrationForm />} />
             <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
+            <Route path="/inicio-sesion" element={<LoginForm />} />
           </Routes>
         </div>
         <AppFooter />
