@@ -59,15 +59,16 @@ const RegistrationForm = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       } else {
         setRegistrationSuccessful(true);
+
+        setTimeout(() => {
+          setRegistrationSuccessful(false);
+          navigate("/cuenta-creada");
+        }, 2000);
+
       }
     } catch (error) {
       setRegistrationSuccessful(false);
       console.error("Error:", error);
-    } finally {
-      setTimeout(() => {
-        setRegistrationSuccessful(false);
-        navigate("/cuenta-creada");
-      }, 2000);
     }
   };
 
