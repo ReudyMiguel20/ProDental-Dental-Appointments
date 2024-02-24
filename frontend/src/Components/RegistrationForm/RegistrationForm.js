@@ -1,5 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import "./RegistrationForm.css"
+import Spinner from 'react-bootstrap/Spinner';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Toast from 'react-bootstrap/Toast';
+
 
 const RegistrationForm = () => {
     const [firstName, setFirstName] = useState("");
@@ -10,6 +16,91 @@ const RegistrationForm = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [address, setAddress] = useState("");
     const [password, setPassword] = useState("");
+    const [registrationSuccessful, setRegistrationSuccessful] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+
+    const navigate = useNavigate();
+
+    function spinnerSuccess()  {
+        return (
+            <div className="spinner-container">
+    <Spinner animation="border" variant="primary" />
+            </div>
+        )
+    }
+
+    function AutohideExample() {
+        const [show, setShow] = useState(false);
+
+        return (
+            <Col md={6} className="mb-2">
+                <Button onClick={toggleShowA} className="mb-2">
+                    Toggle Toast <strong>with</strong> Animation
+                </Button>
+                <Toast show={showA} onClose={toggleShowA}>
+                    <Toast.Header>
+                        <img
+                            src="holder.js/20x20?text=%20"
+                            className="rounded me-2"
+                            alt=""
+                        />
+                        <strong className="me-auto">Bootstrap</strong>
+                        <small>11 mins ago</small>
+                    </Toast.Header>
+                    <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
+                </Toast>
+            </Col>
+        );
+    }
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const newUserData = {
+            first_name: firstName,
+            last_name: lastName,
+            date_of_birth: birthDate,
+            username,
+            email,
+            phone_number: phoneNumber,
+            address,
+            password
+        };
+
+        setRegistrationSuccessful(true);
+
+        try {
+            const response = await fetch(
+                "http://localhost:8080/api/v1/auth/register",
+            {
+                method: "POST",
+                    headers: {
+                    "Content-Type": "application/json",
+            },
+                body: JSON.stringify(newUserData),
+
+            },
+            )
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                setRegistrationSuccessful(true),
+                setShowToast(true);
+            }
+
+        } catch (error) {
+            setRegistrationSuccessful(false);
+            console.error("Error:", error);
+        } finally {
+            setTimeout(() => {
+                setRegistrationSuccessful(false);
+                navigate("/");
+            }, 2000);
+
+        }
+    };
 
   return (
     <div className="registration-form-container">
@@ -73,10 +164,17 @@ const RegistrationForm = () => {
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <button className="button-form">
+                <button
+                    className="button-form"
+                    onClick={handleSubmit}
+                >
                     Crear nueva cuenta
                 </button>
             </form>
+
+            {registrationSuccessful && spinnerSuccess()}
+            {registrationSuccessful && <AutohideExample />}
+
         </div>
     </div>
   )
