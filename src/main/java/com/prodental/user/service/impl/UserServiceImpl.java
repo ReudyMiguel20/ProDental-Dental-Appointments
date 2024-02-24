@@ -1,6 +1,7 @@
 package com.prodental.user.service.impl;
 
 import com.prodental.common.jwt.JwtService;
+import com.prodental.user.exception.IncorrectPassword;
 import com.prodental.user.exception.UserNotEnabled;
 import com.prodental.user.exception.UserNotFound;
 import com.prodental.user.model.dto.NewUserRequest;
@@ -35,6 +36,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email)
+                .orElseThrow(UserNotFound::new);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username)
                 .orElseThrow(UserNotFound::new);
     }
 
@@ -81,6 +88,13 @@ public class UserServiceImpl implements UserService {
     public void isUserEnabled(User user) {
         if (!user.isEnabled()) {
             throw new UserNotEnabled();
+        }
+    }
+
+    @Override
+    public void verifyPassword(User user, String password) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new IncorrectPassword();
         }
     }
 

@@ -1,6 +1,7 @@
 package com.prodental.auth.service.impl;
 
 import com.prodental.auth.model.dto.AuthenticationToken;
+import com.prodental.auth.model.dto.LoginRequest;
 import com.prodental.auth.service.AuthService;
 import com.prodental.common.jwt.JwtService;
 import com.prodental.user.model.dto.NewUserRequest;
@@ -33,6 +34,18 @@ public class AuthServiceImpl implements AuthService {
     public void activateNewUser(String token) {
         User user = userService.getUserByToken(token);
         userService.activateUser(user);
+    }
+
+    @Override
+    public AuthenticationToken generateToken(LoginRequest request) {
+        User user = userService.getUserByUsername(request.getUsername());
+        userService.verifyPassword(user, request.getPassword());
+
+        String jwtToken = jwtService.generateToken(user);
+
+        return AuthenticationToken.builder()
+                .token(jwtToken)
+                .build();
     }
 
 }

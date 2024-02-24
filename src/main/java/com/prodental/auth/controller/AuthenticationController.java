@@ -1,6 +1,7 @@
 package com.prodental.auth.controller;
 
 import com.prodental.auth.model.dto.AuthenticationToken;
+import com.prodental.auth.model.dto.LoginRequest;
 import com.prodental.auth.service.AuthService;
 import com.prodental.common.model.dto.StatusMessage;
 import com.prodental.user.model.dto.NewUserRequest;
@@ -26,6 +27,11 @@ public class AuthenticationController {
     public ResponseEntity<StatusMessage> activateNewUser(@PathVariable String token) {
         authService.activateNewUser(token);
         return ResponseEntity.ok(StatusMessage.builder().message("User Activated").build());
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthenticationToken> authenticatingExistingUser(@Valid @RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.generateToken(request));
     }
 
 }

@@ -12,6 +12,8 @@ public interface UserService {
     // Maybe the use case for this would be when user forgets their username and know the email
     User getUserByEmail(String email);
 
+    User getUserByUsername(String username);
+
     List<User> getAllUsers();
 
     void assignRoleToUser(User user);
@@ -23,6 +25,8 @@ public interface UserService {
     void activateUser(User user);
 
     void isUserEnabled(User user);
+
+    void verifyPassword(User user, String password);
 
     void updateUser(UpdateUserRequest request, String email);
 }

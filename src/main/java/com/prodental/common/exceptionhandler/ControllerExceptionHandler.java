@@ -1,6 +1,7 @@
 package com.prodental.common.exceptionhandler;
 
 import com.prodental.user.exception.EmailNotFound;
+import com.prodental.user.exception.IncorrectPassword;
 import com.prodental.user.exception.UserNotEnabled;
 import com.prodental.user.exception.UserNotFound;
 import jakarta.servlet.http.HttpServletRequest;
@@ -94,6 +95,22 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
                 .status(HttpStatus.FORBIDDEN.value())
                 .error(HttpStatus.FORBIDDEN.getReasonPhrase())
                 .message("User is not enabled yet. Try contacting an administrator.")
+                .path(path)
+                .build();
+
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(customErrorMessage);
+    }
+
+    @ExceptionHandler(IncorrectPassword.class)
+    public ResponseEntity<Object> handleIncorrectPassword() {
+        HttpServletRequest requestServlet = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        String path = requestServlet.getRequestURI();
+
+        CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
+                .timestamp(LocalDateTime.now().format(formatter))
+                .status(HttpStatus.FORBIDDEN.value())
+                .error(HttpStatus.FORBIDDEN.getReasonPhrase())
+                .message("Password is incorrect.")
                 .path(path)
                 .build();
 
