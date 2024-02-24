@@ -43,12 +43,10 @@ public class UserController {
         userService.updateUser(request, username);
     }
 
-    @GetMapping("/getuserdetails/{email}")
+    @GetMapping("/getuserdetails/{username}")
     @ResponseStatus(HttpStatus.OK)
-    public User getUserDetails(
-            @PathVariable String email
-    ) {
-        return userService.getUserByEmail(email);
+    public User getUserDetails(@PathVariable String username) {
+        return userService.getUserByUsername(username);
     }
 
 

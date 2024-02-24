@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
+import { jwtDecode } from "jwt-decode";
 
 const Profile = () => {
   const [firstName, setFirstName] = useState("");
@@ -12,11 +13,20 @@ const Profile = () => {
   const [isUpdateSuccessful, setIsUpdateSuccessful] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const decodedToken = jwtDecode(localStorage.getItem("token"));
+  const usernameFromToken = decodedToken.sub;
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/v1/user/getuserdetails/test",
+          "http://localhost:8080/api/v1/user/getuserdetails/" + usernameFromToken,
+            {
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+        },
         );
         const user = await response.json();
 
@@ -50,12 +60,12 @@ const Profile = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/v1/user/updateuser/test",
+        "http://localhost:8080/api/v1/user/updateuser/" + usernameFromToken,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer" + localStorage.getItem("token"),
+            "Authorization": "Bearer " + localStorage.getItem("token"),
           },
           body: JSON.stringify(updatedInfo),
         },

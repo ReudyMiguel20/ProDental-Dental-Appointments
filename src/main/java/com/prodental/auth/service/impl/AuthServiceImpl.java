@@ -17,8 +17,13 @@ public class AuthServiceImpl implements AuthService {
 
     private final UserService userService;
     private final JwtService jwtService;
-    private final AuthenticationManager authenticationManager;
 
+    /**
+     * This method is used to register a new user and assign a role to the user
+     * based on the number of users in the database.
+     * @param request - NewUserRequest object containing the user's details
+     * @return - AuthenticationToken object containing the JWT token
+     */
     @Override
     public AuthenticationToken register(NewUserRequest request) {
         User newUser = userService.createNewUserAndAssignRole(request);
@@ -30,12 +35,21 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
+    /**
+     * This method is used to activate a new user by setting the user's enabled status to true.
+     * @param token - String containing the token
+     */
     @Override
     public void activateNewUser(String token) {
         User user = userService.getUserByToken(token);
         userService.activateUser(user);
     }
 
+    /**
+     * This method is used to generate a JWT token for an existing user.
+     * @param request - LoginRequest object containing the user's username and password
+     * @return - AuthenticationToken object containing the JWT token
+     */
     @Override
     public AuthenticationToken generateToken(LoginRequest request) {
         User user = userService.getUserByUsername(request.getUsername());
