@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./Sidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import UserPhoto from "../../Assets/user-photo.png";
 
 const Sidebar = ({ items, username }) => {
+    // const [localUsername, setLocalUsername] = useState(username);
   const navigate = useNavigate();
 
   const handleClick = (path) => {
@@ -13,6 +14,10 @@ const Sidebar = ({ items, username }) => {
   const clickToDashboard = () => {
     navigate("/dashboard");
   };
+
+  // useEffect(() => {
+  //     setLocalUsername(username);
+  //   }, [username]);
 
   return (
     <div className="sidebar-container">
