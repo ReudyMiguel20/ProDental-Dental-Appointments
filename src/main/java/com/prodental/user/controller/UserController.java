@@ -1,5 +1,6 @@
 package com.prodental.user.controller;
 
+import com.prodental.auth.model.dto.AuthenticationToken;
 import com.prodental.user.model.dto.UpdateUserRequest;
 import com.prodental.user.model.entity.User;
 import com.prodental.user.service.UserService;
@@ -35,12 +36,12 @@ public class UserController {
     }
 
     @PutMapping("/updateuser/{username}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateUser(
+    @ResponseStatus(HttpStatus.OK)
+    public AuthenticationToken updateUser(
             @PathVariable String username,
             @Valid @RequestBody UpdateUserRequest request
     ) {
-        userService.updateUser(request, username);
+        return userService.updateUser(request, username);
     }
 
     @GetMapping("/getuserdetails/{username}")

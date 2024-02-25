@@ -1,5 +1,6 @@
 package com.prodental.user.service.impl;
 
+import com.prodental.auth.model.dto.AuthenticationToken;
 import com.prodental.common.jwt.JwtService;
 import com.prodental.user.exception.IncorrectPassword;
 import com.prodental.user.exception.UserNotEnabled;
@@ -102,11 +103,11 @@ public class UserServiceImpl implements UserService {
      * This method updates the user with the given email with the new
      * details provided in the request object
      *
-     * @param request the request containing the new user details
-     * @param email the email of the user to update
+     * @param request -  the request containing the new user details
+     * @param username - the email of the user to update
      */
     @Override
-    public void updateUser(UpdateUserRequest request, String username) {
+    public AuthenticationToken updateUser(UpdateUserRequest request, String username) {
         User userToUpdate = getUserByUsername(username);
         isUserEnabled(userToUpdate);
 
@@ -114,6 +115,12 @@ public class UserServiceImpl implements UserService {
         modelMapper.map(request, userToUpdate);
 
         saveUser(userToUpdate);
+
+        String jwtToken = jwtService.generateToken(userToUpdate);
+
+        return AuthenticationToken.builder()
+                .token(jwtToken)
+                .build();
     }
 
 

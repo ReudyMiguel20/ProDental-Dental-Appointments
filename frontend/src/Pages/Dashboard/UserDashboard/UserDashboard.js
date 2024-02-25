@@ -7,10 +7,10 @@ import Home from "../../Home";
 import Contact from "../../Contact";
 import Profile from "../../../Components/Profile/Profile";
 
-const UserDashboard = () => {
+const UserDashboard = ({ username }) => {
   return (
     <div className="user-dashboard-container">
-      <Sidebar items={userItems} />
+      <Sidebar items={userItems} username={username}/>
 
       <div className="dashboard-content">
         <Routes>

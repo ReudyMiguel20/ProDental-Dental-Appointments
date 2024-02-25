@@ -1,5 +1,6 @@
 package com.prodental.user.service;
 
+import com.prodental.auth.model.dto.AuthenticationToken;
 import com.prodental.user.model.dto.NewUserRequest;
 import com.prodental.user.model.dto.UpdateUserRequest;
 import com.prodental.user.model.entity.User;
@@ -28,5 +29,5 @@ public interface UserService {
 
     void verifyPassword(User user, String password);
 
-    void updateUser(UpdateUserRequest request, String email);
+    AuthenticationToken updateUser(UpdateUserRequest request, String email);
 }

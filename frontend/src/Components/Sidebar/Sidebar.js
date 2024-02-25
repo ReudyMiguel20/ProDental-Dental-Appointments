@@ -3,7 +3,7 @@ import "./Sidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import UserPhoto from "../../Assets/user-photo.png";
 
-const Sidebar = ({ items }) => {
+const Sidebar = ({ items, username }) => {
   const navigate = useNavigate();
 
   const handleClick = (path) => {
@@ -24,7 +24,7 @@ const Sidebar = ({ items }) => {
         <div className="user-avatar-container">
           <img src={UserPhoto} />
         </div>
-        <h5>Bienvenido, user</h5>
+        <h5>Bienvenido, {username}</h5>
       </div>
 
       <div className="sidebar-elements">

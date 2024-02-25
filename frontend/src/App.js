@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import AppNavbar from "./Components/AppNavbar/AppNavbar";
 import HeroBanner from "./Components/HeroBanner/HeroBanner";
 import "./App.css";
@@ -16,8 +16,24 @@ import UserDashboard from "./Pages/Dashboard/UserDashboard/UserDashboard";
 import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
 import RegistrationSuccessful from "./Components/RegistrationSuccessful/RegistrationSuccessful";
 import LoginForm from "./Components/LoginForm/LoginForm";
+import { jwtDecode } from "jwt-decode";
 
 function App() {
+  let [username, setUsername] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUsername(decodedToken.sub);
+    }
+
+  },[]);
+
+  console.log(username);
+
+
   return (
     <div className="App">
       <Router>
@@ -27,7 +43,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/dashboard/*" element={<UserDashboard />} />
+            <Route path="/dashboard/*" element={<UserDashboard username={username}  />} />
             <Route path="/registro" element={<RegistrationForm />} />
             <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
             <Route path="/inicio-sesion" element={<LoginForm />} />

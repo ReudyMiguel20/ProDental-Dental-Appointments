@@ -78,9 +78,12 @@ const Profile = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      if (response.status === 204) {
-        console.log("Updated user succesfully. No content returned.");
+      if (response.status === 200) {
+        const data = await response.json();
+
+        console.log("Updated user succesfully.");
         setIsUpdateSuccessful(true);
+        localStorage.setItem("token", data.token);
       }
     } catch (error) {
       console.error("Error:", error);
