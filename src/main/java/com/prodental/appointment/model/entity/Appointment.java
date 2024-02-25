@@ -1,11 +1,14 @@
 package com.prodental.appointment.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import com.prodental.user.model.entity.User;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -27,8 +30,22 @@ public class Appointment {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    private LocalDateTime appointmentDate;
-    private String procedure;
+    @JsonProperty("appointment_date")
+    private LocalDate appointmentDate;
+
+    @JsonProperty("appointment_time")
+    private LocalTime appointmentTime;
+
+    @Enumerated(EnumType.STRING)
+    private Procedures procedure;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    private String dentist;
+
+    private String location;
+
     private String notes;
 
 }

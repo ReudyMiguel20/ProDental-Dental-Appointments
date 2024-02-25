@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../../Home";
 import Contact from "../../Contact";
 import Profile from "../../../Components/Profile/Profile";
+import AppointmentPage from "../../AppointmentPage/AppointmentPage";
 
 const UserDashboard = ({ username }) => {
   return (
@@ -15,6 +16,7 @@ const UserDashboard = ({ username }) => {
       <div className="dashboard-content">
         <Routes>
           <Route path="/" element={<Profile />} />
+            <Route path="/hacer-cita" element={<AppointmentPage />}/>
           <Route path="/perfil" element={<Profile />} />
           <Route path="/contacto" element={<Contact />} />
         </Routes>
