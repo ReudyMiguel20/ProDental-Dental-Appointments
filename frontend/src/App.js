@@ -19,6 +19,7 @@ import LoginForm from "./Components/LoginForm/LoginForm";
 import { jwtDecode } from "jwt-decode";
 import AppointmentForm from "./Components/AppointmentForm/AppointmentForm";
 import AppointmentPage from "./Pages/AppointmentPage/AppointmentPage";
+import CurrentAppointments from "./Components/CurrentAppointments/CurrentAppointments";
 
 function App() {
   let [username, setUsername] = useState(null);
@@ -49,7 +50,7 @@ function App() {
             <Route path="/registro" element={<RegistrationForm />} />
             <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
             <Route path="/inicio-sesion" element={<LoginForm />} />
-            <Route path="/test-cita" element={<AppointmentPage />} />
+            <Route path="/test-cita" element={<CurrentAppointments />} />
           </Routes>
         </div>
         <AppFooter />

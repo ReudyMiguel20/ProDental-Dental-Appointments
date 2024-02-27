@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AppointmentServiceImpl implements AppointmentService {
@@ -36,5 +38,14 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setNotes("");
 
         appointmentRepository.save(appointment);
+    }
+
+    // method to retrieve appointments for the current user
+    @Override
+    public List<Appointment> getAppointments(String username, String token) {
+        User user = userService.getUserByUsername(jwtService.extractUsername(token.substring(7)));
+
+        return appointmentRepository.findAllByUser(user)
+                .orElseThrow(RuntimeException::new);
     }
 }
