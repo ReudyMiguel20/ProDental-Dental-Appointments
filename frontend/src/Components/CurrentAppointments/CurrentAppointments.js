@@ -1,10 +1,9 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
 
-const CurrentAppointments = () => {
+const CurrentAppointments = ({ appointments }) => {
   return (
     <div>
-        //
         <Table responsive>
             <thead>
             <tr>
