@@ -20,7 +20,7 @@ import { jwtDecode } from "jwt-decode";
 import AppointmentForm from "./Components/AppointmentForm/AppointmentForm";
 import AppointmentPage from "./Pages/AppointmentPage/AppointmentPage";
 import CurrentAppointments from "./Components/CurrentAppointments/CurrentAppointments";
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from 'react-query';
 
 function App() {
   let [username, setUsername] = useState(null);
