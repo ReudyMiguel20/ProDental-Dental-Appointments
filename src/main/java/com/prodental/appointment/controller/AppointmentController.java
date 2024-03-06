@@ -39,4 +39,12 @@ public class AppointmentController {
         return appointmentService.getAppointments(username, token);
     }
 
+    @DeleteMapping("/{appointmentId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAppointment(
+            @PathVariable Long appointmentId
+    ) {
+        appointmentService.deleteAppointment(appointmentId);
+    }
+
 }

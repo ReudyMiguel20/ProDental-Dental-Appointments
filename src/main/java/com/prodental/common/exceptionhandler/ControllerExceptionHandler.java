@@ -1,5 +1,6 @@
 package com.prodental.common.exceptionhandler;
 
+import com.prodental.appointment.exception.AppointmentNotFound;
 import com.prodental.user.exception.EmailNotFound;
 import com.prodental.user.exception.IncorrectPassword;
 import com.prodental.user.exception.UserNotEnabled;
@@ -115,6 +116,22 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
 
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(customErrorMessage);
+    }
+
+    @ExceptionHandler(AppointmentNotFound.class)
+    public ResponseEntity<Object> handleAppointmentNotFound() {
+        HttpServletRequest requestServlet = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        String path = requestServlet.getRequestURI();
+
+        CustomErrorMessage customErrorMessage = CustomErrorMessage.builder()
+                .timestamp(LocalDateTime.now().format(formatter))
+                .status(HttpStatus.NOT_FOUND.value())
+                .error(HttpStatus.NOT_FOUND.getReasonPhrase())
+                .message("Appointment was not found.")
+                .path(path)
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(customErrorMessage);
     }
 
 }

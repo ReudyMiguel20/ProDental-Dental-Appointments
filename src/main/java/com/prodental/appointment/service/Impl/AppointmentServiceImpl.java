@@ -1,5 +1,6 @@
 package com.prodental.appointment.service.Impl;
 
+import com.prodental.appointment.exception.AppointmentNotFound;
 import com.prodental.appointment.model.dto.AppointmentRequest;
 import com.prodental.appointment.model.entity.Appointment;
 import com.prodental.appointment.model.entity.Status;
@@ -10,9 +11,11 @@ import com.prodental.user.model.entity.User;
 import com.prodental.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,5 +50,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         return appointmentRepository.findAllByUser(user)
                 .orElseThrow(RuntimeException::new);
+    }
+
+    @Override
+    public void deleteAppointment(Long appointmentId) {
+        Appointment appointmentToDelete = appointmentRepository.findById(appointmentId)
+                        .orElseThrow(AppointmentNotFound::new);
+
+        appointmentRepository.delete(appointmentToDelete);
     }
 }

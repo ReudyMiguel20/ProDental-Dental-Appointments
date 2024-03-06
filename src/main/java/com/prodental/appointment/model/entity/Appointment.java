@@ -10,6 +10,7 @@ import com.prodental.user.model.entity.User;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -24,8 +25,10 @@ public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Long id;
+
+    @Column(updatable = false, nullable = false)
+    private UUID appointmentId;
 
     @JsonBackReference
     @ManyToOne
@@ -49,5 +52,13 @@ public class Appointment {
     private String location;
 
     private String notes;
+
+    @PrePersist
+    public void generateUUID() {
+        if (appointmentId == null) {
+            appointmentId = UUID.randomUUID();
+        }
+
+    }
 
 }

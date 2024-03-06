@@ -32,6 +32,8 @@ public class SecurityConfiguration {
                             .requestMatchers("/api/v1/user/testadmin").hasAnyRole( "ADMIN")
                             .requestMatchers("/api/v1/user/**").hasAnyAuthority("USER")
                             .requestMatchers("/api/v1/user/**").hasAnyRole( "USER")
+//                            .requestMatchers("/api/v1/user/getuserdetails/**").hasAnyAuthority("USER")
+//                            .requestMatchers("/api/v1/user/getuserdetails/**").hasAnyRole( "USER")
                             .anyRequest()
                             .permitAll();
                 })

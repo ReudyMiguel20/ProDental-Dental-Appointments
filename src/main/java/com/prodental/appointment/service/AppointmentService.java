@@ -14,4 +14,6 @@ public interface AppointmentService {
 
     // method to retrieve appointments for the current user
     List<Appointment> getAppointments(String username, String token);
+
+    void deleteAppointment(Long appointmentId);
 }
