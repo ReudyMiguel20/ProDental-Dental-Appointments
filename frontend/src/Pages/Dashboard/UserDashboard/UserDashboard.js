@@ -7,6 +7,7 @@ import Home from "../../Home";
 import Contact from "../../Contact";
 import Profile from "../../../Components/Profile/Profile";
 import AppointmentPage from "../../AppointmentPage/AppointmentPage";
+import CurrentAppointments from "../../../Components/CurrentAppointments/CurrentAppointments";
 
 const UserDashboard = ({ username }) => {
   return (
@@ -19,6 +20,7 @@ const UserDashboard = ({ username }) => {
             <Route path="/hacer-cita" element={<AppointmentPage />}/>
           <Route path="/perfil" element={<Profile />} />
           <Route path="/contacto" element={<Contact />} />
+            <Route path="/citas" element={<CurrentAppointments />}/>
         </Routes>
       </div>
     </div>

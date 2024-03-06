@@ -53,7 +53,7 @@ function App() {
             <Route path="/registro" element={<RegistrationForm />} />
             <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
             <Route path="/inicio-sesion" element={<LoginForm />} />
-            <Route path="/test-cita" element={<CurrentAppointments />} />
+            {/*<Route path="/test-cita" element={<CurrentAppointments />} />*/}
           </Routes>
         </div>
         <AppFooter />

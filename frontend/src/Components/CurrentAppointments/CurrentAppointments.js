@@ -1,8 +1,12 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
+import "./CurrentAppointments.css";
 import {useQuery} from "react-query";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faDeleteLeft, faEraser} from "@fortawesome/free-solid-svg-icons";
 
-const CurrentAppointments = ({ appointments }) => {
+
+const CurrentAppointments = () => {
 
     // // use react query here
     // const {data} = useQuery({
@@ -14,7 +18,16 @@ const CurrentAppointments = ({ appointments }) => {
     // });
 
     const fetchAppointments = async () => {
-        const res = await fetch("http://localhost:8080/api/v1/appointment/appointments?username");
+        const res = await fetch(
+            "http://localhost:8080/api/v1/appointment/appointments?username",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token"),
+                }
+            }
+        );
 
         if (!res.ok) {
             throw new Error("Network response was not ok");
@@ -29,11 +42,14 @@ const CurrentAppointments = ({ appointments }) => {
     });
 
   return (
-    <div>
+    <div className="appointments-container">
         {status === "loading" && <div>Loading...</div>}
         {status === "error" && <div>Error fetching data</div>}
         {status === "success" && (
+            <>
+                <h1>Citas Actuales</h1>
             <Table responsive>
+
                 <thead>
                 <tr>
                     <th>#</th>
@@ -43,30 +59,27 @@ const CurrentAppointments = ({ appointments }) => {
                     <th>Procedimiento</th>
                     <th>Dentista</th>
                     <th>Lugar</th>
-                    <th>Notas</th>
+                    <th>Borrar</th>
                 </tr>
                 </thead>
+
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    {Array.from({ length: 7 }).map((_, index) => (
-                        <td key={index}>Table cell {index}</td>
-                    ))}
-                </tr>
-                <tr>
-                    <td>2</td>
-                    {Array.from({ length: 7 }).map((_, index) => (
-                        <td key={index}>Table cell {index}</td>
-                    ))}
-                </tr>
-                <tr>
-                    <td>3</td>
-                    {Array.from({ length: 7 }).map((_, index) => (
-                        <td key={index}>Table cell {index}</td>
-                    ))}
-                </tr>
+                {data.map((appointments, index) => (
+                    <tr key={index}>
+                    <td>{index + 1}</td>
+                        <td>{appointments.status}</td>
+                        <td>{appointments.appointment_date}</td>
+                        <td>{appointments.appointment_time}</td>
+                        <td>{appointments.procedure}</td>
+                        <td>{appointments.dentist}</td>
+                        <td>{appointments.location}</td>
+                        <td><button><FontAwesomeIcon icon={faDeleteLeft} /></button></td>
+                    </tr>
+                ))}
                 </tbody>
+
             </Table>
+            </>
         )};
 
 

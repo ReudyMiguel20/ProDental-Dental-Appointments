@@ -1,5 +1,6 @@
 package com.prodental.appointment.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -26,6 +27,7 @@ public class Appointment {
     @JsonIgnore
     private Long id;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "username", nullable = false)
     private User user;

@@ -4,7 +4,7 @@ import "./AppointmentsUser.css";
 const AppointmentsUser = () => {
     return (
         <div className="appointment-user-container">
-            <AppointmentsUser/>
+            <AppointmentsUser />
         </div>
     )
 }
