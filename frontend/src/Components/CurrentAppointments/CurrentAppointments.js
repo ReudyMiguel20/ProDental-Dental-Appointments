@@ -78,25 +78,27 @@ const CurrentAppointments = () => {
                         </thead>
 
                         <tbody>
-                        {data.map((appointment, index) => {
-                            console.log(appointment.id);
+                        {data.filter(appointment => appointment.status === "PENDIENTE" || appointment.status === "AGENDADA")
+                            .map((appointment, index) => {
+                                console.log(appointment.id);
 
-                            return (
-                                <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{appointment.status}</td>
-                                    <td>{appointment.appointment_date}</td>
-                                    <td>{appointment.appointment_time}</td>
-                                    <td>{appointment.procedure}</td>
-                                    <td>{appointment.dentist}</td>
-                                    <td>{appointment.location}</td>
-                                    <td>
-                                        <button onClick={() => mutate(appointment.id)}><FontAwesomeIcon icon={faDeleteLeft}/></button>
-                                    </td>
-
-                                </tr>
-                            );
-                        })}
+                                return (
+                                    <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>{appointment.status}</td>
+                                        <td>{appointment.appointment_date}</td>
+                                        <td>{appointment.appointment_time}</td>
+                                        <td>{appointment.procedure}</td>
+                                        <td>{appointment.dentist}</td>
+                                        <td>{appointment.location}</td>
+                                        <td>
+                                            <button onClick={() => mutate(appointment.id)}><FontAwesomeIcon
+                                                icon={faDeleteLeft}/></button>
+                                        </td>
+                                    </tr>
+                                );
+                            })
+                        }
                         </tbody>
 
                     </Table>
