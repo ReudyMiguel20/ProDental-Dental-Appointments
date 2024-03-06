@@ -8,6 +8,7 @@ import Contact from "../../Contact";
 import Profile from "../../../Components/Profile/Profile";
 import AppointmentPage from "../../AppointmentPage/AppointmentPage";
 import CurrentAppointments from "../../../Components/CurrentAppointments/CurrentAppointments";
+import HistoryAppointments from "../../../Components/HistoryAppointments/HistoryAppointments";
 
 const UserDashboard = ({ username }) => {
   return (
@@ -21,6 +22,7 @@ const UserDashboard = ({ username }) => {
           <Route path="/perfil" element={<Profile />} />
           <Route path="/contacto" element={<Contact />} />
             <Route path="/citas" element={<CurrentAppointments />}/>
+            <Route path="/historial" element={<HistoryAppointments />}/>
         </Routes>
       </div>
     </div>

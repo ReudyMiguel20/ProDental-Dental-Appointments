@@ -103,7 +103,7 @@ const CurrentAppointments = () => {
 
                     </Table>
                 </>
-            )};
+            )}
 
         </div>
     )
