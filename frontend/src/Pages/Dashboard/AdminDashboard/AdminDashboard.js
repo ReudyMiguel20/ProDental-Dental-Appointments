@@ -8,6 +8,7 @@ import AppointmentPage from "../../AppointmentPage/AppointmentPage";
 import Contact from "../../Contact";
 import CurrentAppointments from "../../../Components/CurrentAppointments/CurrentAppointments";
 import HistoryAppointments from "../../../Components/HistoryAppointments/HistoryAppointments";
+import AdminUserManagement from "../../../Components/AdminUserManagement/AdminUserManagement";
 
 const AdminDashboard = ({ username }) => {
   return (
@@ -17,7 +18,7 @@ const AdminDashboard = ({ username }) => {
           <div className="dashboard-content">
               <Routes>
                   <Route path="/" element={<Profile/>}/>
-                  <Route path="/hacer-cita" element={<AppointmentPage/>}/>
+                  <Route path="/administrar-usuarios" element={<AdminUserManagement />}/>
                   <Route path="/perfil" element={<Profile/>}/>
                   <Route path="/contacto" element={<Contact/>}/>
                   <Route path="/citas" element={<CurrentAppointments/>}/>
