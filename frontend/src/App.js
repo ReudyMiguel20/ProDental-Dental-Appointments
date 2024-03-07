@@ -22,6 +22,7 @@ import AppointmentPage from "./Pages/AppointmentPage/AppointmentPage";
 import CurrentAppointments from "./Components/CurrentAppointments/CurrentAppointments";
 import { useQuery } from 'react-query';
 import AdminDashboard from "./Pages/Dashboard/AdminDashboard/AdminDashboard";
+import ModalUserInfo from "./Components/ModalUserInfo/ModalUserInfo";
 
 function App() {
   let [username, setUsername] = useState(null);
@@ -59,6 +60,7 @@ function App() {
             <Route path="/registro" element={<RegistrationForm />} />
             <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
             <Route path="/inicio-sesion" element={<LoginForm />} />
+            <Route path="/test" element={<ModalUserInfo />} />
           </Routes>
         </div>
         <AppFooter />

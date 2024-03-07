@@ -28,12 +28,10 @@ public class SecurityConfiguration {
 
                 .authorizeHttpRequests(auth -> {
                     auth
-                            .requestMatchers("/api/v1/admin/**  ").hasAnyAuthority("ADMIN")
+                            .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ADMIN")
                             .requestMatchers("/api/v1/admin/**").hasAnyRole( "ADMIN")
                             .requestMatchers("/api/v1/user/**").hasAnyAuthority("USER")
                             .requestMatchers("/api/v1/user/**").hasAnyRole( "USER")
-//                            .requestMatchers("/api/v1/user/getuserdetails/**").hasAnyAuthority("USER")
-//                            .requestMatchers("/api/v1/user/getuserdetails/**").hasAnyRole( "USER")
                             .anyRequest()
                             .permitAll();
                 })

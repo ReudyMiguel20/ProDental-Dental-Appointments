@@ -1,0 +1,7 @@
+.admin-user-management-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #CED4DA;
+    height: 100vh;
+    padding: 2rem;
+}
