@@ -19,22 +19,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/test")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> test(Authentication auth) {
-        return ResponseEntity.ok("Test");
-    }
-
-    @GetMapping("/testadmin")
-    public ResponseEntity<String> testAdmin(Authentication auth) {
-        return ResponseEntity.ok("Test");
-    }
-
-    @GetMapping("/testuser")
-    public ResponseEntity<String> testUser(Authentication auth) {
-        return ResponseEntity.ok("Test");
-    }
-
     @PutMapping("/updateuser/{username}")
     @ResponseStatus(HttpStatus.OK)
     public AuthenticationToken updateUser(

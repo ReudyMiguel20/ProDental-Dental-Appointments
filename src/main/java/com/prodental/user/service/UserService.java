@@ -30,4 +30,10 @@ public interface UserService {
     void verifyPassword(User user, String password);
 
     AuthenticationToken updateUser(UpdateUserRequest request, String email);
+
+    void deleteUser(String username);
+
+    void enableUser(String username);
+
+    void disableUser(String username);
 }

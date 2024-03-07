@@ -11,11 +11,9 @@ import com.prodental.user.model.entity.User;
 import com.prodental.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -43,6 +41,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointmentRepository.save(appointment);
     }
 
+    @Override
+    public List<Appointment> getAllAppointments() {
+        return appointmentRepository.findAll();
+    }
+
     // method to retrieve appointments for the current user
     @Override
     public List<Appointment> getAppointments(String username, String token) {
@@ -59,4 +62,57 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         appointmentRepository.delete(appointmentToDelete);
     }
+
+    @Override
+    public void setAppointmentAsScheduled(Long appointmentId) {
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(AppointmentNotFound::new);
+
+        appointment.setStatus(Status.AGENDADA);
+
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public void setAppointmentAsCanceled(Long appointmentId) {
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(AppointmentNotFound::new);
+
+        appointment.setStatus(Status.CANCELADA);
+
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public void setAppointmentAsPending(Long appointmentId) {
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(AppointmentNotFound::new);
+
+        appointment.setStatus(Status.PENDIENTE);
+
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public void setAppointmentAsCompleted(Long appointmentId) {
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(AppointmentNotFound::new);
+
+        appointment.setStatus(Status.COMPLETADA);
+
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public void setAppointmentAsRescheduled(Long appointmentId) {
+        Appointment appointment = appointmentRepository.findById(appointmentId)
+                .orElseThrow(AppointmentNotFound::new);
+
+        appointment.setStatus(Status.REPROGRAMADA);
+
+        appointmentRepository.save(appointment);
+    }
+
+
+
 }

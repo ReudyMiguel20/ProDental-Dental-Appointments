@@ -123,5 +123,27 @@ public class UserServiceImpl implements UserService {
                 .build();
     }
 
+    @Override
+    public void deleteUser(String username) {
+        User user = getUserByUsername(username);
+        userRepository.delete(user);
+    }
+
+    @Override
+    public void enableUser(String username) {
+        User user = getUserByUsername(username);
+        user.setEnabled(true);
+        saveUser(user);
+    }
+
+    @Override
+    public void disableUser(String username) {
+        User user = getUserByUsername(username);
+        user.setEnabled(false);
+        saveUser(user);
+    }
+
+
+
 
 }

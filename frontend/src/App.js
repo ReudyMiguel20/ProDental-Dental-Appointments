@@ -21,9 +21,11 @@ import AppointmentForm from "./Components/AppointmentForm/AppointmentForm";
 import AppointmentPage from "./Pages/AppointmentPage/AppointmentPage";
 import CurrentAppointments from "./Components/CurrentAppointments/CurrentAppointments";
 import { useQuery } from 'react-query';
+import AdminDashboard from "./Pages/Dashboard/AdminDashboard/AdminDashboard";
 
 function App() {
   let [username, setUsername] = useState(null);
+  let [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -31,6 +33,10 @@ function App() {
     if (token) {
       const decodedToken = jwtDecode(token);
       setUsername(decodedToken.sub);
+
+      const role = decodedToken.role[0].authority;
+      setUserRole(role);
+      console.log(userRole)
     }
 
   },[]);
@@ -49,11 +55,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/dashboard/*" element={<UserDashboard username={username}  />} />
+            <Route path="/dashboard/*" element={userRole === "ADMIN" ? <AdminDashboard username={username} /> : <UserDashboard username={username}  />} />
             <Route path="/registro" element={<RegistrationForm />} />
             <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
             <Route path="/inicio-sesion" element={<LoginForm />} />
-            {/*<Route path="/test-cita" element={<CurrentAppointments />} />*/}
           </Routes>
         </div>
         <AppFooter />

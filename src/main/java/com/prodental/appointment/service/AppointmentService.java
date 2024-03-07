@@ -12,8 +12,20 @@ public interface AppointmentService {
 
     void createAppointment(AppointmentRequest appointmentRequest, String token);
 
+    List<Appointment> getAllAppointments();
+
     // method to retrieve appointments for the current user
     List<Appointment> getAppointments(String username, String token);
 
     void deleteAppointment(Long appointmentId);
+
+    void setAppointmentAsScheduled(Long appointmentId);
+
+    void setAppointmentAsCanceled(Long appointmentId);
+
+    void setAppointmentAsPending(Long appointmentId);
+
+    void setAppointmentAsCompleted(Long appointmentId);
+
+    void setAppointmentAsRescheduled(Long appointmentId);
 }
