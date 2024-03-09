@@ -9,6 +9,7 @@ import Contact from "../../Contact";
 import CurrentAppointments from "../../../Components/CurrentAppointments/CurrentAppointments";
 import HistoryAppointments from "../../../Components/HistoryAppointments/HistoryAppointments";
 import AdminUserManagement from "../../../Components/AdminUserManagement/AdminUserManagement";
+import AdminAppointmentManagement from "../../../Components/AdminAppointmentManagement/AdminAppointmentManagement";
 
 const AdminDashboard = ({ username }) => {
   return (
@@ -20,7 +21,7 @@ const AdminDashboard = ({ username }) => {
                   <Route path="/" element={<Profile/>}/>
                   <Route path="/administrar-usuarios" element={<AdminUserManagement />}/>
                   <Route path="/perfil" element={<Profile/>}/>
-                  <Route path="/contacto" element={<Contact/>}/>
+                  <Route path="/administar-citas" element={<AdminAppointmentManagement />}/>
                   <Route path="/citas" element={<CurrentAppointments/>}/>
                   <Route path="/historial" element={<HistoryAppointments/>}/>
               </Routes>

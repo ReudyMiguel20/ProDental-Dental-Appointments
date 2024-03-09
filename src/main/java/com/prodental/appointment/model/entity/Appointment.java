@@ -1,8 +1,6 @@
 package com.prodental.appointment.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 import com.prodental.user.model.entity.User;
@@ -21,6 +19,9 @@ import java.util.UUID;
 @Builder
 @Entity
 @Table(name = "appointments")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Appointment {
 
     @Id
@@ -30,9 +31,10 @@ public class Appointment {
     @Column(updatable = false, nullable = false)
     private UUID appointmentId;
 
-    @JsonBackReference
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "username", nullable = false)
+
     private User user;
 
     @JsonProperty("appointment_date")

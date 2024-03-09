@@ -6,6 +6,6 @@ import MessageIcon from '@mui/icons-material/Message';
 export const adminItems = [
     { title: "Perfil", path: "/dashboard/perfil", icon: <AccountBoxIcon /> },
     { title: "Administrar Usuarios", path: "/dashboard/administrar-usuarios", icon: <SupervisedUserCircleIcon /> },
-    { title: "Administrar Citas", path: "/dashboard/hacer-cita", icon: <EditCalendarIcon />,},
+    { title: "Administrar Citas", path: "/dashboard/administar-citas", icon: <EditCalendarIcon />,},
     { title: "Mensajes", path: "/dashboard/historial", icon: <MessageIcon /> }
     ];

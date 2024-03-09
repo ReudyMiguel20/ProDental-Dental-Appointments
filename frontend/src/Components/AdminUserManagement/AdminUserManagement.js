@@ -107,7 +107,7 @@ const AdminUserManagement = () => {
             {status === "error" && <div>Error fetching data</div>}
             {status === "success" && (
                 <div>
-                    <h2>Users</h2>
+                    <h2>Usuarios</h2>
                     <Table responsive>
                         <thead>
                         <tr>
