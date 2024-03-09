@@ -64,7 +64,6 @@ const RegistrationForm = () => {
           setRegistrationSuccessful(false);
           navigate("/cuenta-creada");
         }, 2000);
-
       }
     } catch (error) {
       setRegistrationSuccessful(false);

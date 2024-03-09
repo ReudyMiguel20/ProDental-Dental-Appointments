@@ -1,14 +1,14 @@
 .login-form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5rem;
-    background-color: #ced4da;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+  background-color: #ced4da;
+  height: 100vh;
 }
 
 .login-form {
-    width: 100%;
-    max-width: 600px;
-    padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
 }

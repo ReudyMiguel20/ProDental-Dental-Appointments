@@ -1,111 +1,111 @@
-import React, {useState} from 'react'
-import './LoginForm.css'
+import React, { useState } from "react";
+import "./LoginForm.css";
 import Spinner from "react-bootstrap/Spinner";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [loginSuccess, setLoginSuccess] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function spinnerSuccess() {
-        return (
-            <div className="spinner-container">
-                <Spinner animation="border" variant="primary" />
-            </div>
-        );
-    }
+  function spinnerSuccess() {
+    return (
+      <div className="spinner-container">
+        <Spinner animation="border" variant="primary" />
+      </div>
+    );
+  }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-        const loginData = {
-            username,
-            password
-        }
-
-        try {
-            const response = await fetch (
-                "http://localhost:8080/api/v1/auth/login",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(loginData)
-                },
-            );
-
-            if (!response.ok) {
-                throw new Error(`HTTP Error! status: ${response.status}`);
-            } else {
-                const data = await response.json();
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("userLoggedIn", true);
-
-                setLoginSuccess(true);
-
-                setTimeout(() => {
-                    setLoginSuccess(false);
-                    navigate("/dashboard");
-                }, 2000);
-
-            }
-        } catch (error) {
-            setLoginSuccess(false);
-            console.error("Error:", error);
-        }
+    const loginData = {
+      username,
+      password,
     };
 
-    return (
-        <div className="login-form-container">
-            <div className="login-form">
-                <h2>Iniciar Sesión</h2>
+    try {
+      const response = await fetch("http://localhost:8080/api/v1/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
 
-                <form>
-                    <div className="mb-3">
+      if (!response.ok) {
+        throw new Error(`HTTP Error! status: ${response.status}`);
+      } else {
+        const data = await response.json();
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userLoggedIn", true);
 
-                        <label htmlFor="Nombre de Usuario" className="form-label">Nombre de Usuario</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            id="email"
-                            aria-describedby="emailHelp"
-                            onChange={(e => setUsername(e.target.value))}
-                        />
+        setLoginSuccess(true);
 
-                    </div>
+        setTimeout(() => {
+          setLoginSuccess(false);
+          navigate("/dashboard");
+        }, 2000);
+      }
+    } catch (error) {
+      setLoginSuccess(false);
+      console.error("Error:", error);
+    }
+  };
 
-                    <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Contraseña</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="password"
-                            onChange={(e => setPassword(e.target.value))}
-                        />
-                    </div>
+  return (
+    <div className="login-form-container">
+      <div className="login-form">
+        <h2>Iniciar Sesión</h2>
 
-                    <div className="mb-3 form-check">
-                        <input type="checkbox" className="form-check-input" id="recordar"/>
-                        <label className="form-check-label" htmlFor="recordar">Recordarme</label>
-                    </div>
+        <form>
+          <div className="mb-3">
+            <label htmlFor="Nombre de Usuario" className="form-label">
+              Nombre de Usuario
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
 
-                    <button
-                        type="submit"
-                        className="btn btn-primary"
-                        onClick={handleSubmit}
-                    >Iniciar Sesión
-                    </button>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-                    {loginSuccess && spinnerSuccess()}
+          <div className="mb-3 form-check">
+            <input type="checkbox" className="form-check-input" id="recordar" />
+            <label className="form-check-label" htmlFor="recordar">
+              Recordarme
+            </label>
+          </div>
 
-                </form>
-            </div>
-        </div>
-    )
-}
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={handleSubmit}
+          >
+            Iniciar Sesión
+          </button>
 
-export default LoginForm
+          {loginSuccess && spinnerSuccess()}
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default LoginForm;

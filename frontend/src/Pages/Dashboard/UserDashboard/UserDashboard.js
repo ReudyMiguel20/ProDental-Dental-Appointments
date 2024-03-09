@@ -13,16 +13,16 @@ import HistoryAppointments from "../../../Components/HistoryAppointments/History
 const UserDashboard = ({ username }) => {
   return (
     <div className="user-dashboard-container">
-      <Sidebar items={userItems} username={username}/>
+      <Sidebar items={userItems} username={username} />
 
       <div className="dashboard-content">
         <Routes>
           <Route path="/" element={<Profile />} />
-            <Route path="/hacer-cita" element={<AppointmentPage />}/>
+          <Route path="/hacer-cita" element={<AppointmentPage />} />
           <Route path="/perfil" element={<Profile />} />
           <Route path="/contacto" element={<Contact />} />
-            <Route path="/citas" element={<CurrentAppointments />}/>
-            <Route path="/historial" element={<HistoryAppointments />}/>
+          <Route path="/citas" element={<CurrentAppointments />} />
+          <Route path="/historial" element={<HistoryAppointments />} />
         </Routes>
       </div>
     </div>

@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 import "./AppointmentsUser.css";
 
 const AppointmentsUser = () => {
-    return (
-        <div className="appointment-user-container">
-            <AppointmentsUser />
-        </div>
-    )
-}
+  return (
+    <div className="appointment-user-container">
+      <AppointmentsUser />
+    </div>
+  );
+};
 
-export default AppointmentsUser
+export default AppointmentsUser;
