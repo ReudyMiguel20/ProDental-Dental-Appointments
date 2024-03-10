@@ -1,9 +1,8 @@
 import React from "react";
 import "./UserDashboard.css";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
-import { userItems } from "../../../Data/UserSidebarData";
-import { Route, Routes } from "react-router-dom";
-import Home from "../../Home";
+import {userItems} from "../../../Data/UserSidebarData";
+import {Route, Routes} from "react-router-dom";
 import Contact from "../../Contact";
 import Profile from "../../../Components/Profile/Profile";
 import AppointmentPage from "../../AppointmentPage/AppointmentPage";

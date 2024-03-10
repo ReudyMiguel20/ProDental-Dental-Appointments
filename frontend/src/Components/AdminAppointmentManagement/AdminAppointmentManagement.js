@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./AdminAppointmentManagement.css";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import {useMutation, useQuery, useQueryClient} from "react-query";
 import Table from "react-bootstrap/Table";
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
 
 const AdminAppointmentManagement = () => {
   // Variables
   const [showModal, setShowModal] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [appointmentId, setAppointmentId] = useState(null);
   const queryClient = useQueryClient();
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  }
 
   // Functions using the API
 
@@ -116,30 +123,35 @@ const AdminAppointmentManagement = () => {
   const deleteAppointmentMutation = useMutation(deleteAppointment, {
     onSuccess: () => {
       queryClient.invalidateQueries("appointments");
+      toast.success("Appointment deleted successfully");
     },
   });
 
   const setAppointmentScheduledMutation = useMutation(setAppointmentScheduled, {
     onSuccess: () => {
       queryClient.invalidateQueries("appointments");
+      toast.success("Cita cambiada a estado \"AGENDADA\"")
     },
   });
 
   const setAppointmentCanceledMutation = useMutation(setAppointmentCanceled, {
     onSuccess: () => {
       queryClient.invalidateQueries("appointments");
+      toast.success("Cita cambiada a estado \"CANCELADA\"")
     },
   });
 
   const setAppointmentPendingMutation = useMutation(setAppointmentPending, {
     onSuccess: () => {
       queryClient.invalidateQueries("appointments");
+      toast.success("Cita cambiada a estado \"PENDIENTE\"")
     },
   });
 
   const setAppointmentCompletedMutation = useMutation(setAppointmentCompleted, {
     onSuccess: () => {
       queryClient.invalidateQueries("appointments");
+      toast.success("Cita cambiada a estado \"COMPLETADA\"")
     },
   });
 
@@ -148,6 +160,7 @@ const AdminAppointmentManagement = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries("appointments");
+        toast.success("Cita cambiada a estado \"REPROGRAMADA\"")
       },
     },
   );
@@ -192,6 +205,7 @@ const AdminAppointmentManagement = () => {
 
   return (
     <div className="admin-appointment-management-container">
+      <ToastContainer />
       {status === "loading" && <div>Loading...</div>}
       {status === "error" && <div>Error fetching data</div>}
       {status === "success" && (
@@ -235,11 +249,10 @@ const AdminAppointmentManagement = () => {
                   </td>
                   <td>
                     <button
-                      onClick={() =>
-                        deleteAppointmentMutation.mutate({
-                          appointmentId: appointment.id,
-                        })
-                      }
+                      onClick={() => {
+                          setAppointmentId(appointment.id)
+                          setShowModal(true)
+                      }}
                     >
                       X
                     </button>
@@ -249,7 +262,16 @@ const AdminAppointmentManagement = () => {
             </tbody>
           </Table>
         </div>
+
       )}
+      {showModal &&
+          <ModalConfirmation
+              show={showModal}
+              closeModal={toggleModal}
+              deleteAppointmentMutation={deleteAppointmentMutation}
+              appointmentId={appointmentId}
+      />
+      }
     </div>
   );
 };

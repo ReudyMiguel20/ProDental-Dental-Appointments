@@ -3,8 +3,6 @@ package com.prodental.user.model.entity;
 import com.fasterxml.jackson.annotation.*;
 import com.prodental.appointment.model.entity.Appointment;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

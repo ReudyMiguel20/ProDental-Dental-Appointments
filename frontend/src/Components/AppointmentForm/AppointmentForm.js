@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./AppointmentForm.css";
 import AppointmentProcedures from "../../Data/AppointmentProcedures";
 import Popup from "reactjs-popup";

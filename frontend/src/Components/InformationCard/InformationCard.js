@@ -1,7 +1,6 @@
 import React from "react";
 import "./InformationCard.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const InformationCard = (props) => {
   return (

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Table from "react-bootstrap/Table";
 import "./CurrentAppointments.css";
-import { useQuery, useMutation, useQueryClient } from "react-query";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDeleteLeft, faEraser } from "@fortawesome/free-solid-svg-icons";
+import {useMutation, useQuery, useQueryClient} from "react-query";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faDeleteLeft} from "@fortawesome/free-solid-svg-icons";
 
 const CurrentAppointments = () => {
   const queryClient = useQueryClient();

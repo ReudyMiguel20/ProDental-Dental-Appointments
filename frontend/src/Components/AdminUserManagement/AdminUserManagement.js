@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./AdminUserManagement.css";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import {useMutation, useQuery, useQueryClient} from "react-query";
 import Table from "react-bootstrap/Table";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 import ModalUserInfo from "../ModalUserInfo/ModalUserInfo";
 
 const AdminUserManagement = () => {

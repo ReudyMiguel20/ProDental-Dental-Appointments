@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./AppointmentPage.css";
 import AppointmentForm from "../../Components/AppointmentForm/AppointmentForm";
 

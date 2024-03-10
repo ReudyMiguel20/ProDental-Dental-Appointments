@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "./RegistrationForm.css";
 import Spinner from "react-bootstrap/Spinner";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Toast from "react-bootstrap/Toast";
 
 const RegistrationForm = () => {
   const [firstName, setFirstName] = useState("");

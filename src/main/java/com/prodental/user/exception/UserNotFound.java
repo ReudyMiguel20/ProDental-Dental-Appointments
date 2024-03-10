@@ -1,7 +1,5 @@
 package com.prodental.user.exception;
 
-import org.springframework.web.bind.annotation.ExceptionHandler;
-
 public class UserNotFound extends RuntimeException {
 
     public UserNotFound() {

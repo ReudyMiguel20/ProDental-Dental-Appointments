@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./LoginForm.css";
 import Spinner from "react-bootstrap/Spinner";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");

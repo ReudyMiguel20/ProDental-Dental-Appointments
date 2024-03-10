@@ -1,8 +1,4 @@
-import {
-  faCalendarCheck,
-  faTooth,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import {faCalendarCheck, faTooth, faUser,} from "@fortawesome/free-solid-svg-icons";
 
 export const InformationCardData = [
   {

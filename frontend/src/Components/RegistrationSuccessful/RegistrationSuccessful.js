@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import "./RegistrationSuccessful.css";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const RegistrationSuccessful = () => {
   const navigate = useNavigate();

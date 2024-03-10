@@ -1,15 +1,14 @@
 import React from "react";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
-import { adminItems } from "../../../Data/AdminSidebarData";
+import {adminItems} from "../../../Data/AdminSidebarData";
 import "./AdminDashboard.css";
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Profile from "../../../Components/Profile/Profile";
-import AppointmentPage from "../../AppointmentPage/AppointmentPage";
-import Contact from "../../Contact";
 import CurrentAppointments from "../../../Components/CurrentAppointments/CurrentAppointments";
 import HistoryAppointments from "../../../Components/HistoryAppointments/HistoryAppointments";
 import AdminUserManagement from "../../../Components/AdminUserManagement/AdminUserManagement";
 import AdminAppointmentManagement from "../../../Components/AdminAppointmentManagement/AdminAppointmentManagement";
+import ModalConfirmation from "../../../Components/ModalConfirmation/ModalConfirmation";
 
 const AdminDashboard = ({ username }) => {
   return (
@@ -30,6 +29,7 @@ const AdminDashboard = ({ username }) => {
           />
           <Route path="/citas" element={<CurrentAppointments />} />
           <Route path="/historial" element={<HistoryAppointments />} />
+          <Route path="/test-cita" element={<ModalConfirmation />} />
         </Routes>
       </div>
     </div>

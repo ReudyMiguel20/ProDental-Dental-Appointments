@@ -8,7 +8,6 @@ import com.prodental.user.model.dto.NewUserRequest;
 import com.prodental.user.model.entity.User;
 import com.prodental.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 
 @Service

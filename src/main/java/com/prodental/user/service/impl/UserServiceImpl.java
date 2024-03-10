@@ -13,9 +13,9 @@ import com.prodental.user.repository.UserRepository;
 import com.prodental.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.Conditions;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.modelmapper.ModelMapper;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import "./Profile.css";
-import { jwtDecode } from "jwt-decode";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
+import {jwtDecode} from "jwt-decode";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserEdit} from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
   const [firstName, setFirstName] = useState("");
