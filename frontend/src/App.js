@@ -4,7 +4,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppFooter from "./Components/AppFooter/AppFooter";
 import FloatingButton from "./Components/FloatingButton/FloatingButton";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import UserDashboard from "./Pages/Dashboard/UserDashboard/UserDashboard";
@@ -15,6 +15,7 @@ import {jwtDecode} from "jwt-decode";
 import AdminDashboard from "./Pages/Dashboard/AdminDashboard/AdminDashboard";
 import ModalUserInfo from "./Components/ModalUserInfo/ModalUserInfo";
 import ModalConfirmation from "./Components/ModalConfirmation/ModalConfirmation";
+import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
   let [username, setUsername] = useState(null);
@@ -47,17 +48,21 @@ function App() {
             <Route
               path="/dashboard/*"
               element={
+              userRole ? (
                 userRole === "ADMIN" ? (
                   <AdminDashboard username={username} />
                 ) : (
                   <UserDashboard username={username} />
+                )
+                ) : (
+                    <Navigate to="/inicio-sesion" />
                 )
               }
             />
             <Route path="/registro" element={<RegistrationForm />} />
             <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
             <Route path="/inicio-sesion" element={<LoginForm />} />
-            <Route path="/test-cita" element={<ModalConfirmation />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <AppFooter />
