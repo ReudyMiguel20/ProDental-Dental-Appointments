@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./LoginForm.css";
 import Spinner from "react-bootstrap/Spinner";
 import {useNavigate} from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -12,9 +13,9 @@ const LoginForm = () => {
 
   function spinnerSuccess() {
     return (
-      <div className="spinner-container">
-        <Spinner animation="border" variant="primary" />
-      </div>
+        <div className="spinner-container">
+          <Spinner animation="border" variant="primary" />
+        </div>
     );
   }
 
@@ -36,11 +37,17 @@ const LoginForm = () => {
       });
 
       if (!response.ok) {
+        localStorage.clear();
         throw new Error(`HTTP Error! status: ${response.status}`);
       } else {
+        localStorage.clear();
+
         const data = await response.json();
+        const decodedToken = jwtDecode(data.token);
+
         localStorage.setItem("token", data.token);
         localStorage.setItem("userLoggedIn", true);
+        localStorage.setItem("userRole", decodedToken.role[0].authority);
 
         setLoginSuccess(true);
 
@@ -56,55 +63,55 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login-form-container">
-      <div className="login-form">
-        <h2>Iniciar Sesión</h2>
+      <div className="login-form-container">
+        <div className="login-form">
+          <h2>Iniciar Sesión</h2>
 
-        <form>
-          <div className="mb-3">
-            <label htmlFor="Nombre de Usuario" className="form-label">
-              Nombre de Usuario
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              aria-describedby="emailHelp"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
+          <form>
+            <div className="mb-3">
+              <label htmlFor="Nombre de Usuario" className="form-label">
+                Nombre de Usuario
+              </label>
+              <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  aria-describedby="emailHelp"
+                  onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Contraseña
+              </label>
+              <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
 
-          <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="recordar" />
-            <label className="form-check-label" htmlFor="recordar">
-              Recordarme
-            </label>
-          </div>
+            <div className="mb-3 form-check">
+              <input type="checkbox" className="form-check-input" id="recordar" />
+              <label className="form-check-label" htmlFor="recordar">
+                Recordarme
+              </label>
+            </div>
 
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handleSubmit}
-          >
-            Iniciar Sesión
-          </button>
+            <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={handleSubmit}
+            >
+              Iniciar Sesión
+            </button>
 
-          {loginSuccess && spinnerSuccess()}
-        </form>
+            {loginSuccess && spinnerSuccess()}
+          </form>
+        </div>
       </div>
-    </div>
   );
 };
 

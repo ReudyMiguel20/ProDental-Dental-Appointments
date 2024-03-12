@@ -18,57 +18,68 @@ import ModalConfirmation from "./Components/ModalConfirmation/ModalConfirmation"
 import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
-  let [username, setUsername] = useState(null);
-  let [userRole, setUserRole] = useState(null);
+    let [username, setUsername] = useState(null);
+    let [userRole, setUserRole] = useState(localStorage.getItem("userRole") || null);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+    useEffect(() => {
+        const token = localStorage.getItem("token");
 
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      setUsername(decodedToken.sub);
+        if (token) {
+            const decodedToken = jwtDecode(token);
+            setUsername(decodedToken.sub);
+            console.log(userRole);
+        }
+    }, []);
 
-      const role = decodedToken.role[0].authority;
-      setUserRole(role);
-      console.log(userRole);
-    }
-  }, []);
+    console.log(username);
 
-  console.log(username);
-
-  return (
-    <div className="App">
-      <Router>
-        <FloatingButton />
-        <AppNavbar />
-        <div className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/dashboard/*"
-              element={
-              userRole ? (
-                userRole === "ADMIN" ? (
-                  <AdminDashboard username={username} />
-                ) : (
-                  <UserDashboard username={username} />
-                )
-                ) : (
-                    <Navigate to="/inicio-sesion" />
-                )
-              }
-            />
-            <Route path="/registro" element={<RegistrationForm />} />
-            <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
-            <Route path="/inicio-sesion" element={<LoginForm />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+    return (
+        <div className="App">
+            <Router>
+                <FloatingButton />
+                <AppNavbar />
+                <div className="main-content">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route
+                            path="/dashboard/*"
+                            element={
+                                userRole ? (
+                                    userRole === "ADMIN" ? (
+                                        <AdminDashboard username={username} />
+                                    ) : (
+                                        <UserDashboard username={username} />
+                                    )
+                                ) : (
+                                    <Navigate to="/inicio-sesion" />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/dashboard"
+                            element={
+                                userRole ? (
+                                    userRole === "ADMIN" ? (
+                                        <AdminDashboard username={username} />
+                                    ) : (
+                                        <UserDashboard username={username} />
+                                    )
+                                ) : (
+                                    <Navigate to="/inicio-sesion" />
+                                )
+                            }
+                        />
+                        <Route path="/registro" element={<RegistrationForm />} />
+                        <Route path="/cuenta-creada" element={<RegistrationSuccessful />} />
+                        <Route path="/inicio-sesion" element={<LoginForm />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </div>
+                <AppFooter />
+            </Router>
         </div>
-        <AppFooter />
-      </Router>
-    </div>
-  );
+    );
 }
 
 export default App;
