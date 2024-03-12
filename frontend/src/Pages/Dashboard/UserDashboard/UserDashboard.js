@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./UserDashboard.css";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import {userItems} from "../../../Data/UserSidebarData";
@@ -10,6 +10,11 @@ import CurrentAppointments from "../../../Components/CurrentAppointments/Current
 import HistoryAppointments from "../../../Components/HistoryAppointments/HistoryAppointments";
 
 const UserDashboard = ({ username }) => {
+
+    useEffect(() => {
+        document.title = "Dashboard - Pro Dental";
+    }, []);
+
   return (
     <div className="user-dashboard-container">
       <Sidebar items={userItems} username={username} />

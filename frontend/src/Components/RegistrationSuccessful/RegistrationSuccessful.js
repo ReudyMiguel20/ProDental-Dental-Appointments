@@ -16,6 +16,10 @@ const RegistrationSuccessful = () => {
     };
   }, [navigate]);
 
+  useEffect(() => {
+    document.title = "Registro - Pro Dental";
+  }, []);
+
   return (
     <div className="registration-notice-container">
       <div className="registration-notice">

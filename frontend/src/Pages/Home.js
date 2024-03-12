@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import HeroBanner from "../Components/HeroBanner/HeroBanner";
 import {InformationCardData} from "../Data/InformationCardData";
 import InformationCard from "../Components/InformationCard/InformationCard";
@@ -6,6 +6,11 @@ import ImageForm from "../Components/ImageForm/ImageForm";
 import ContactUs from "../Components/ContactUs/ContactUs";
 
 const Home = () => {
+
+    useEffect(() => {
+        document.title = "Inicio - Pro Dental";
+    }, []);
+
   return (
     <div className="home">
       <HeroBanner />

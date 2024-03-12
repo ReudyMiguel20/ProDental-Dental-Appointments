@@ -65,7 +65,7 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    document.title = "Iniciar Sesión";
+    document.title = "Iniciar Sesión - Pro Dental";
   }, []);
 
   return (

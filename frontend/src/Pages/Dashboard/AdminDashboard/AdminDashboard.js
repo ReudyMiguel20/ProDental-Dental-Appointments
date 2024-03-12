@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import {adminItems} from "../../../Data/AdminSidebarData";
 import "./AdminDashboard.css";
@@ -11,6 +11,11 @@ import AdminAppointmentManagement from "../../../Components/AdminAppointmentMana
 import ModalConfirmation from "../../../Components/ModalConfirmation/ModalConfirmation";
 
 const AdminDashboard = ({ username }) => {
+
+  useEffect(() => {
+    document.title = "Dashboard - Pro Dental";
+  }, []);
+
   return (
     <div className="admin-dashboard-container">
       <Sidebar items={adminItems} username={username} />

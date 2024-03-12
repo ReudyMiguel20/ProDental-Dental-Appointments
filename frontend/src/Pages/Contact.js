@@ -1,7 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ContactUs from "../Components/ContactUs/ContactUs";
 
 const Contact = () => {
+
+    useEffect(() => {
+        document.title = "Contacto - Pro Dental";
+    }, []);
+
   return (
     <div>
       <ContactUs />

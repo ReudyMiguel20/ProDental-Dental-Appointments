@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import "./RegistrationForm.css";
 import Spinner from "react-bootstrap/Spinner";
@@ -67,6 +67,10 @@ const RegistrationForm = () => {
       console.error("Error:", error);
     }
   };
+
+  useEffect(() => {
+    document.title = "Registro - Pro Dental";
+  }, []);
 
   return (
     <div className="registration-form-container">
