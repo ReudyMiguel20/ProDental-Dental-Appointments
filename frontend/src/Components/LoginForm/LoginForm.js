@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./LoginForm.css";
 import Spinner from "react-bootstrap/Spinner";
 import {useNavigate} from "react-router-dom";
@@ -63,6 +63,10 @@ const LoginForm = () => {
       console.error("Error:", error);
     }
   };
+
+  useEffect(() => {
+    document.title = "Iniciar Sesión";
+  }, []);
 
   return (
       <div className="login-form-container">
