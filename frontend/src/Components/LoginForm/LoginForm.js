@@ -45,6 +45,7 @@ const LoginForm = () => {
         const data = await response.json();
         const decodedToken = jwtDecode(data.token);
 
+        localStorage.setItem("user", decodedToken.sub);
         localStorage.setItem("token", data.token);
         localStorage.setItem("userLoggedIn", true);
         localStorage.setItem("userRole", decodedToken.role[0].authority);
@@ -54,6 +55,7 @@ const LoginForm = () => {
         setTimeout(() => {
           setLoginSuccess(false);
           navigate("/dashboard");
+          window.location.reload();
         }, 2000);
       }
     } catch (error) {
