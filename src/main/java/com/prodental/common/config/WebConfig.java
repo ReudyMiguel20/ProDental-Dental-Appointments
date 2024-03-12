@@ -19,7 +19,5 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/{spring:^(?!.*\\.(js|css)$).*}/**")
-                .setViewName("forward:/");
-    }
+        registry.addViewController("/").setViewName("forward:/index.html");
 }
