@@ -12,3 +12,9 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+
+
+@media (max-width: 555px) {
+
+}

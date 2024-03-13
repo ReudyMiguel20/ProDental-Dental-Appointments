@@ -16,38 +16,41 @@ const AppNavbar = () => {
   }
 
   return (
-    <Navbar bg="primary" data-bs-theme="dark">
-      <Container>
-        <Navbar.Brand href="#home">
-          <img
-            src={logo}
-            style={{ width: "40px", height: "40px", backgroundColor: "blue" }}
-            alt="logo"
-          />
-          <span className="logo-title">Pro Dental</span>
-        </Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link href="/">Inicio</Nav.Link>
-          {!userLoggedIn && <Nav.Link href="/registro">Registrarse</Nav.Link>}
-          <Nav.Link href="#pricing">Nosotros</Nav.Link>
-          <Nav.Link href="/contact">Contacto</Nav.Link>
-        </Nav>
-        <Nav className="ml-auto">
-          <div className="right-options">
-            {!userLoggedIn && <Nav.Link href="/inicio-sesion">Iniciar Sesión</Nav.Link>}
+      <Navbar bg="primary" data-bs-theme="dark" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home">
+            <img
+                src={logo}
+                style={{ width: "40px", height: "40px", backgroundColor: "blue" }}
+                alt="logo"
+            />
+            <span className="logo-title">Pro Dental</span>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/">Inicio</Nav.Link>
+              {!userLoggedIn && <Nav.Link href="/registro">Registrarse</Nav.Link>}
+              <Nav.Link href="#pricing">Nosotros</Nav.Link>
+              <Nav.Link href="/contact">Contacto</Nav.Link>
+            </Nav>
+            <Nav className="ml-auto">
+              <div className="right-options">
+                {!userLoggedIn && <Nav.Link href="/inicio-sesion">Iniciar Sesión</Nav.Link>}
 
-            {userLoggedIn && (
-                <>
-                  <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-                  <p>|</p>
-                  <Nav.Link href="/" onClick={handleLogout}>Cerrar Sesión</Nav.Link>
-                </>
-            )}
+                {userLoggedIn && (
+                    <>
+                      <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                      <p>|</p>
+                      <Nav.Link href="/" onClick={handleLogout}>Cerrar Sesión</Nav.Link>
+                    </>
+                )}
 
-          </div>
-        </Nav>
-      </Container>
-    </Navbar>
+              </div>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
   );
 };
 
