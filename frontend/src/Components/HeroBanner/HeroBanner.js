@@ -8,8 +8,10 @@ const HeroBanner = () => {
       <img className="hero-banner-img" src={herobanner} alt="hero-banner" />
 
       <div className="hero-banner-text">
+
         <span className="hero-banner-text-one">Nosotros Cuidaremos</span>
         <span className="hero-banner-text-two">Tus Dientes</span>
+
 
         <div className="hero-banner-description">
           <span>Pro Dental ofrece una gama completa de servicios dentales</span>
@@ -17,10 +19,10 @@ const HeroBanner = () => {
         </div>
 
         <div className="hero-appointment">
-          <button className="hero-appointment-first-button">
+          <button id="first-button" className="hero-appointment-first-button">
             Agenda Tu Cita
           </button>
-          <button className="hero-appointment-second-button">
+          <button id="second-button" className="hero-appointment-second-button">
             Mas Información
           </button>
         </div>

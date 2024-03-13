@@ -74,18 +74,71 @@
   margin-left: 25px;
 }
 
-@media (max-width: 600px) {
-  .hero-banner .hero-banner-text {
+@media screen and (max-width: 366px), screen and (max-width: 900px) {
+  .hero-banner-text {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
     width: 100%;
+    padding-top: 0;
+    margin-left: 0;
   }
 
-  .hero-banner .hero-banner-text .hero-banner-text-one,
-  .hero-banner .hero-banner-text .hero-banner-text-two {
-    font-size: 5vw;
+  .hero-banner-text-one,
+  .hero-banner-text-two {
+    font-size: 0.8em;
   }
 
-  .hero-appointment .hero-appointment-first-button,
-  .hero-appointment .hero-appointment-second-button {
-    font-size: 4vw;
+  .hero-banner-description span {
+    font-size: 0.8em;
+    align-items: center;
+    display: none;
   }
 }
+
+@media screen and (max-width: 375px) {
+  .hero-banner-text {
+    margin-left: 0;
+  }
+
+  .hero-banner-text-one,
+  .hero-banner-text-two,
+  .hero-banner-description span {
+    display: none;
+  }
+
+  .hero-appointment button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+    font-size: 150px;
+  }
+
+  #first-button, #second-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+    font-size: 8px;
+  }
+
+  #first-button {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 366px), screen and (max-width: 671px) {
+   .hero-banner-text-one,
+    .hero-banner-text-two {
+     font-size: 1.5em;
+     align-items: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+    }
+}
+
