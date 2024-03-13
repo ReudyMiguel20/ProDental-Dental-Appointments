@@ -42,7 +42,7 @@ const RegistrationForm = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/v1/auth/register",
+        "https://prodental-website-df2c2d1fd4bd.herokuapp.com/api/v1/auth/register",
         {
           method: "POST",
           headers: {
