@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.85cc9e4e.css",
-    "main.js": "/static/js/main.a51418e1.js",
+    "main.css": "/static/css/main.20de23f8.css",
+    "main.js": "/static/js/main.2592c3bb.js",
     "static/js/592.2d3f624d.chunk.js": "/static/js/592.2d3f624d.chunk.js",
     "static/media/background-form4.jpg": "/static/media/background-form4.1cc8877fc90b3daf2c7e.jpg",
     "static/media/Banner.png": "/static/media/Banner.d75a3368afe97266451e.png",
     "static/media/user-photo.png": "/static/media/user-photo.3bcfc3f4380626f654a2.png",
     "static/media/Pro-Dental.png": "/static/media/Pro-Dental.b4e838d7987835aca544.png",
     "index.html": "/index.html",
-    "main.85cc9e4e.css.map": "/static/css/main.85cc9e4e.css.map",
-    "main.a51418e1.js.map": "/static/js/main.a51418e1.js.map",
+    "main.20de23f8.css.map": "/static/css/main.20de23f8.css.map",
+    "main.2592c3bb.js.map": "/static/js/main.2592c3bb.js.map",
     "592.2d3f624d.chunk.js.map": "/static/js/592.2d3f624d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.85cc9e4e.css",
-    "static/js/main.a51418e1.js"
+    "static/css/main.20de23f8.css",
+    "static/js/main.2592c3bb.js"
   ]
 }
