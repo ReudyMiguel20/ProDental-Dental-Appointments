@@ -103,7 +103,10 @@
   }
 
   .hero-banner-text-one,
-  .hero-banner-text-two,
+  .hero-banner-text-two {
+    font-size: 2em;
+  }
+
   .hero-banner-description span {
     display: none;
   }
@@ -134,7 +137,7 @@
 @media screen and (max-width: 366px), screen and (max-width: 671px) {
    .hero-banner-text-one,
     .hero-banner-text-two {
-     font-size: 1.5em;
+     font-size: 2em;
      align-items: center;
      display: flex;
      flex-direction: column;
