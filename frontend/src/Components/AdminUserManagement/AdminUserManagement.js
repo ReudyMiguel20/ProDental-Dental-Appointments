@@ -15,7 +15,7 @@ const AdminUserManagement = () => {
   // Functions using the API
 
   const fetchUsers = async () => {
-    const response = await fetch("http://prodental-website-df2c2d1fd4bd.herokuapp.com/api/v1/admin/users", {
+    const response = await fetch("https://prodental-website-df2c2d1fd4bd.herokuapp.com/api/v1/admin/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
